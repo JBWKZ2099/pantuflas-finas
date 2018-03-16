@@ -41,6 +41,22 @@
 		$result = mysqli_query(  $mysqli, $sql );
 		return mysqli_fetch_array($result, MYSQLI_ASSOC);
 	}
+	
+	function userAccess() {
+		$mysqli = conectar_db();
+		selecciona_db( $mysqli );
+		$usr = $_SESSION["usr"];
+		$sql = "SELECT * FROM users WHERE username = '$usr'";
+		$result = mysqli_query( $mysqli, $sql );
+		$id_user = mysqli_fetch_array($result, MYSQLI_ASSOC)["id"];
+		mysqli_close($mysqli);
+
+		$mysqli = conectar_db();
+		selecciona_db( $mysqli );
+		$sql2 = "SELECT * FROM access WHERE id_user = $id_user";
+		$res = mysqli_query( $mysqli, $sql2 );
+		return mysqli_fetch_array($res, MYSQLI_ASSOC);
+	}
 
 	function logout() {
 		/*Vaciar sesión*/
@@ -50,6 +66,7 @@
 
 		header("Location: ../../admin/");
 	}
+
 
 	function checkPass($pswd, $db_pswd) {
 		if( crypt($pswd, $db_pswd) == $db_pswd ) return true;

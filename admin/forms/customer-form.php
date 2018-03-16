@@ -58,3 +58,59 @@
 			</select>
 		</div>
 <?php } ?>
+
+<div class="form-group">
+	<p><strong>Acceso a módulos</strong></p>
+</div>
+<div class="form-group" data-check="null">
+	<label for="home">
+		<input data-admin id="home" type="checkbox" name="home" value=""> Inicio
+	</label>
+</div>
+<div class="form-group">
+	<label for="catalogue">
+		<input data-admin id="catalogue" type="checkbox" name="catalogue" value=""> Catálogo
+	</label>
+</div>
+<div class="form-group">
+	<label for="request">
+		<input data-admin id="request" type="checkbox" name="request" value=""> Solicitud
+	</label>
+</div>
+<div class="form-group">
+	<label for="manteinance">
+		<input data-admin id="manteinance" type="checkbox" name="manteinance" value=""> Mantenimiento
+	</label>
+</div>
+<div class="form-group">
+	<label for="web_page">
+		<input data-admin id="web_page" type="checkbox" name="web_page" value=""> Página Web
+	</label>
+</div>
+<div class="form-group">
+	<label for="my_account">
+		<input data-admin id="my_account" type="checkbox" name="my_account" value=""> Mi Cuenta
+	</label>
+</div>
+
+
+<script>
+	$("#permission").change(function(e){
+		if( $(this).val()==1 ) {
+			$("[data-admin]").each(function(index, el) {
+				if( !$("#"+el.id).is(":checked") )
+					$("#"+el.id).trigger("click");
+			});
+			$("[data-check]").attr("data-check","all");
+		}
+	});
+
+	$("[data-admin]").click(function(e){
+		var which = $(this).attr("id");
+
+		if( $("[data-check]").attr("data-check")=="all" ) {
+			$("[data-check]").attr("data-check","semi");
+			$("#permission").val("null");
+		}
+	});
+</script>
