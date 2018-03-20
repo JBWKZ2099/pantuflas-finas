@@ -67,7 +67,7 @@
 						<div class="card">
 							<div class="card-header bg-blue text-white">
 								<i class="fa fa-fw fa-user-circle"></i>
-								Lista de históricos
+								Lista de usuarios
 							</div>
 							<div class="card-body">
 								<?php

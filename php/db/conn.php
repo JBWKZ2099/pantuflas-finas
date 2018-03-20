@@ -196,7 +196,17 @@
 		}
 		$sql = rtrim($sql,", ");
 		$updated_at = setTimeStamp();
-		$sql .= ", updated_at='$updated_at' WHERE id=$id";
+
+		if( $table!="access" )
+			$sql .= ", updated_at='$updated_at'";
+
+		if( $table!="access" )
+			$sql .= " WHERE id=$id";
+		else {
+			$sql .= " WHERE id_user=$id";
+			// var_dump($sql);
+			// exit();
+		}
 		// var_dump($sql);
 		// exit();
 		

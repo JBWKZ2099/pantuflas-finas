@@ -66,6 +66,7 @@
 				break;
 
 			case "update-customer":
+			print_r($_POST);
 				$password = null;
 				if( isset($_POST["password"]) && !empty($_POST["password"]) )
 					$password = $_POST["password"];
@@ -96,7 +97,45 @@
 				$tbl = "users";
 				// var_dump($data); exit();
 				updateData($_POST["which"], $columns, $data, $tbl);
-				// exit();
+
+				$columns2 = array(
+					0 => "home",
+					1 => "catalogue",
+					2 => "request",
+					3 => "manteinance",
+					4 => "web_page",
+					5 => "my_account",
+				);
+
+				if( $_POST["home"]==null ) $home = "0";
+				else $home = $_POST["home"];
+
+				if( $_POST["catalogue"]==null ) $catalogue = "0";
+				else $catalogue = $_POST["catalogue"];
+
+				if( $_POST["_requestinput"]==null ) $_requestinput = "0";
+				else $_requestinput = $_POST["_requestinput"];
+
+				if( $_POST["manteinance"]==null ) $manteinance = "0";
+				else $manteinance = $_POST["manteinance"];
+
+				if( $_POST["web_page"]==null ) $web_page = "0";
+				else $web_page = $_POST["web_page"];
+
+				if( $_POST["my_account"]==null ) $my_account = "0";
+				else $my_account = $_POST["my_account"];
+
+
+				$data2 = array(
+					0 => $home,
+					1 => $catalogue,
+					2 => $_requestinput,
+					3 => $manteinance,
+					4 => $web_page,
+					5 => $my_account,
+				);
+				// var_dump($data2); exit();
+				updateData($_POST["id_user"], $columns2, $data2, "access");
 				header("Location: ".$up_dir."admin/customers");
 
 				break;
@@ -132,10 +171,46 @@
 					10 => 'NULL',
 					11 => 'NULL',
 				);
+				registro_nuevo($tbl, $data, $columns);
+				
+				$columns2 = array(
+					0 => "home",
+					1 => "catalogue",
+					2 => "request",
+					3 => "manteinance",
+					4 => "web_page",
+					5 => "my_account",
+				);
+
+				if( $_POST["home"]==null ) $home = "0";
+				else $home = $_POST["home"];
+
+				if( $_POST["catalogue"]==null ) $catalogue = "0";
+				else $catalogue = $_POST["catalogue"];
+
+				if( $_POST["_requestinput"]==null ) $_requestinput = "0";
+				else $_requestinput = $_POST["_requestinput"];
+
+				if( $_POST["manteinance"]==null ) $manteinance = "0";
+				else $manteinance = $_POST["manteinance"];
+
+				if( $_POST["web_page"]==null ) $web_page = "0";
+				else $web_page = $_POST["web_page"];
+
+				if( $_POST["my_account"]==null ) $my_account = "0";
+				else $my_account = $_POST["my_account"];
+
+				$data2 = array(
+					0 => $home,
+					1 => $catalogue,
+					2 => $_requestinput,
+					3 => $manteinance,
+					4 => $web_page,
+					5 => $my_account,
+				);
 				// var_dump($data);
 				// exit();
-
-				registro_nuevo($tbl, $data, $columns);
+				registro_nuevo("access", $data2, $columns2);
 				header("Location: ".$up_dir."admin/customers-create");
 				break;
 

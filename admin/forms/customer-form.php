@@ -59,39 +59,62 @@
 		</div>
 <?php } ?>
 
-<div class="form-group">
-	<p><strong>Acceso a módulos</strong></p>
-</div>
-<div class="form-group" data-check="null">
-	<label for="home">
-		<input data-admin id="home" type="checkbox" name="home" value=""> Inicio
-	</label>
-</div>
-<div class="form-group">
-	<label for="catalogue">
-		<input data-admin id="catalogue" type="checkbox" name="catalogue" value=""> Catálogo
-	</label>
-</div>
-<div class="form-group">
-	<label for="request">
-		<input data-admin id="request" type="checkbox" name="request" value=""> Solicitud
-	</label>
-</div>
-<div class="form-group">
-	<label for="manteinance">
-		<input data-admin id="manteinance" type="checkbox" name="manteinance" value=""> Mantenimiento
-	</label>
-</div>
-<div class="form-group">
-	<label for="web_page">
-		<input data-admin id="web_page" type="checkbox" name="web_page" value=""> Página Web
-	</label>
-</div>
-<div class="form-group">
-	<label for="my_account">
-		<input data-admin id="my_account" type="checkbox" name="my_account" value=""> Mi Cuenta
-	</label>
-</div>
+<?php if( isset($row) ) { ?>
+	<?php if( $row["id"]==user()["id"] ) { ?>
+		<input type="hidden" name="home" value="1">
+		<input type="hidden" name="catalogue" value="1">
+		<input type="hidden" name="_requestinput" value="1">
+		<input type="hidden" name="manteinance" value="1">
+		<input type="hidden" name="web_page" value="1">
+		<input type="hidden" name="my_account" value="1">
+	<?php } else { ?>
+		<div class="form-group">
+			<p><strong>Acceso a módulos</strong></p>
+		</div>
+		<?php
+			// ini_set("display_errors", "On");
+			$id_user = $row["id"];
+
+			if( isset($access_row["home"]) && !empty($access_row["home"]) ) { $home="checked"; $home_val = 1; } else $home_val = 0;
+			if( isset($access_row["catalogue"]) && !empty($access_row["catalogue"]) ) { $catalogue="checked"; $catalogue_val = 1; } else $catalogue_val = 0;
+			if( isset($access_row["request"]) && !empty($access_row["request"]) ) { $request="checked"; $request_val = 1; } else $request_val = 0;
+			if( isset($access_row["manteinance"]) && !empty($access_row["manteinance"]) ) { $manteinance="checked"; $manteinance_val = 1; } else $manteinance_val = 0;
+			if( isset($access_row["web_page"]) && !empty($access_row["web_page"]) ) { $web_page="checked"; $web_page_val = 1; } else $web_page_val = 0;
+			if( isset($access_row["my_account"]) && !empty($access_row["my_account"]) ) { $my_account="checked"; $my_account_val = 1; } else $my_account_val = 0;
+		?>
+		<div class="form-group" data-check="null">
+			<label for="home">
+				<input data-admin id="home" type="checkbox" name="home" <?php echo $home." value='".$home_val."'"; ?>> Inicio
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="catalogue">
+				<input data-admin id="catalogue" type="checkbox" name="catalogue" <?php echo $catalogue." value='".$catalogue_val."'"; ?>> Catálogo
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="request">
+				<input data-admin id="request" type="checkbox" name="_requestinput" <?php echo $request." value='".$request_val."'"; ?>> Solicitud
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="manteinance">
+				<input data-admin id="manteinance" type="checkbox" name="manteinance" <?php echo $manteinance." value='".$manteinance_val."'"; ?>> Mantenimiento
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="web_page">
+				<input data-admin id="web_page" type="checkbox" name="web_page" <?php echo $web_page." value='".$web_page_val."'"; ?>> Página Web
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="my_account">
+				<input data-admin id="my_account" type="checkbox" name="my_account" <?php echo $my_account." value='".$my_account_val."'"; ?>> Mi Cuenta
+			</label>
+		</div>
+		<input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+	<?php } ?>
+<?php } ?>
 
 
 <script>
@@ -100,6 +123,7 @@
 			$("[data-admin]").each(function(index, el) {
 				if( !$("#"+el.id).is(":checked") )
 					$("#"+el.id).trigger("click");
+					$("#"+el.id).attr("value","1")
 			});
 			$("[data-check]").attr("data-check","all");
 		}
@@ -107,6 +131,11 @@
 
 	$("[data-admin]").click(function(e){
 		var which = $(this).attr("id");
+
+		if( $(this).val()==1 )
+			$(this).val(0)
+		else
+			$(this).val(1)
 
 		if( $("[data-check]").attr("data-check")=="all" ) {
 			$("[data-check]").attr("data-check","semi");

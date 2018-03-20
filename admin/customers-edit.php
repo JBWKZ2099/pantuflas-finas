@@ -53,8 +53,9 @@ ini_set("display_errors", "On");
 									<input type="hidden" name="which" value="<?php echo $_GET["id"]; ?>">
 									<?php
 										$row = mysqli_fetch_array($result);
-										$sql = null; $sql = "SELECT * FROM permissions";
+										$sql = null; $sql = "SELECT * FROM access WHERE id_user=".$row['id'];
 										$u_result = consulta_tb($mysqli,$sql);
+										$access_row = mysqli_fetch_array($u_result);
 										$edit = true;
 									?>
 									<?php include("forms/customer-form.php") ?>
