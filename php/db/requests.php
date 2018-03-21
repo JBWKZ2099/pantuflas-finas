@@ -66,7 +66,6 @@
 				break;
 
 			case "update-customer":
-			print_r($_POST);
 				$password = null;
 				if( isset($_POST["password"]) && !empty($_POST["password"]) )
 					$password = $_POST["password"];
@@ -105,6 +104,7 @@
 					3 => "manteinance",
 					4 => "web_page",
 					5 => "my_account",
+					6 => "users",
 				);
 
 				if( $_POST["home"]==null ) $home = "0";
@@ -125,6 +125,9 @@
 				if( $_POST["my_account"]==null ) $my_account = "0";
 				else $my_account = $_POST["my_account"];
 
+				if( $_POST["users"]==null ) $users = "0";
+				else $users = $_POST["users"];
+
 
 				$data2 = array(
 					0 => $home,
@@ -133,11 +136,11 @@
 					3 => $manteinance,
 					4 => $web_page,
 					5 => $my_account,
+					6 => $users,
 				);
 				// var_dump($data2); exit();
 				updateData($_POST["id_user"], $columns2, $data2, "access");
 				header("Location: ".$up_dir."admin/customers");
-
 				break;
 
 			case "create-customer":
@@ -156,7 +159,17 @@
 					10 => "update_at",
 					11 => "deleted_at",
 				);
-				$password = cryptBlowfish($_POST["password"]);
+
+				if( !isset($_POST["page"]) && empty($_POST["page"]) ) {
+					$password = cryptBlowfish($_POST["password"]);
+					$permission = $_POST["permission"];
+				} else {
+					session_start();
+					$_SESSION["old_password"] = activationCode("password");
+					$password = cryptBlowfish( $_SESSION["old_password"] );
+					$permission = 2;
+				}
+
 				$data = array(
 					0 => 'NULL',
 					1 => "'".$_POST["name"]."'",
@@ -165,53 +178,109 @@
 					4 => "'".$_POST["username"]."'",
 					5 => "'".$_POST["email"]."'",
 					6 => "'".$password."'",
-					7 => "'".$_POST["permission"]."'",
+					7 => "'".$permission."'",
 					8 => "''",
 					9 => "'".setTimeStamp()."'",
 					10 => 'NULL',
 					11 => 'NULL',
 				);
-				registro_nuevo($tbl, $data, $columns);
-				
-				$columns2 = array(
-					0 => "home",
-					1 => "catalogue",
-					2 => "request",
-					3 => "manteinance",
-					4 => "web_page",
-					5 => "my_account",
-				);
-
-				if( $_POST["home"]==null ) $home = "0";
-				else $home = $_POST["home"];
-
-				if( $_POST["catalogue"]==null ) $catalogue = "0";
-				else $catalogue = $_POST["catalogue"];
-
-				if( $_POST["_requestinput"]==null ) $_requestinput = "0";
-				else $_requestinput = $_POST["_requestinput"];
-
-				if( $_POST["manteinance"]==null ) $manteinance = "0";
-				else $manteinance = $_POST["manteinance"];
-
-				if( $_POST["web_page"]==null ) $web_page = "0";
-				else $web_page = $_POST["web_page"];
-
-				if( $_POST["my_account"]==null ) $my_account = "0";
-				else $my_account = $_POST["my_account"];
-
-				$data2 = array(
-					0 => $home,
-					1 => $catalogue,
-					2 => $_requestinput,
-					3 => $manteinance,
-					4 => $web_page,
-					5 => $my_account,
-				);
+				// var_dump($columns);
 				// var_dump($data);
-				// exit();
-				registro_nuevo("access", $data2, $columns2);
-				header("Location: ".$up_dir."admin/customers-create");
+				$validate_user = array(
+					0 => true,
+					1 => null,
+				);
+
+				if( !isset($_POST["page"]) && empty($_POST["page"]) )
+					$validate_user[1] = $up_dir."admin/customers-create";
+				else
+					$validate_user[1] = $up_dir."admin/login";
+
+				var_dump($validate_user);
+
+				registro_nuevo($tbl, $data, $columns, $validate_user);
+				
+				$mysqli = conectar_db();
+				selecciona_db($mysqli);
+				$get_user = "SELECT id FROM users WHERE username='".$_POST["username"]."'";
+				$gu_result = mysqli_query($mysqli, $get_user);
+				$id_user = mysqli_fetch_array($gu_result)["id"];
+
+				if( !isset($_POST["page"]) && empty($_POST["page"]) ) {
+					$mysqli = conectar_db();
+					selecciona_db($mysqli);
+					$get_user = "SELECT id FROM users WHERE username='".$_POST["username"]."'";
+					$gu_result = mysqli_query($mysqli, $get_user);
+					$id_user = mysqli_fetch_array($gu_result)["id"];
+
+					$columns2 = array(
+						0 => "id",
+						1 => "id_user",
+						2 => "home",
+						3 => "catalogue",
+						4 => "request",
+						5 => "manteinance",
+						6 => "web_page",
+						7 => "my_account",
+						8 => "users",
+					);
+
+					if( $_POST["home"]==null ) $home = "0";
+					else $home = $_POST["home"];
+
+					if( $_POST["catalogue"]==null ) $catalogue = "0";
+					else $catalogue = $_POST["catalogue"];
+
+					if( $_POST["_requestinput"]==null ) $_requestinput = "0";
+					else $_requestinput = $_POST["_requestinput"];
+
+					if( $_POST["manteinance"]==null ) $manteinance = "0";
+					else $manteinance = $_POST["manteinance"];
+
+					if( $_POST["web_page"]==null ) $web_page = "0";
+					else $web_page = $_POST["web_page"];
+
+					if( $_POST["my_account"]==null ) $my_account = "0";
+					else $my_account = $_POST["my_account"];
+
+					if( $_POST["users"]==null ) $users = "0";
+					else $users = $_POST["users"];
+
+					$data2 = array(
+						0 => 'NULL',
+						1 => $id_user,
+						2 => $home,
+						3 => $catalogue,
+						4 => $_requestinput,
+						5 => $manteinance,
+						6 => $web_page,
+						7 => $my_account,
+						8 => $users,
+					);
+					// var_dump($columns2);
+					// var_dump($data2);
+					registro_nuevo("access", $data2, $columns2);
+					header("Location: ".$up_dir."admin/customers-create");
+				} else {
+					// From register page (LOGIN)
+					$columns = array(
+						0 => "id",
+						1 => "id_user",
+						2 => "token",
+						3 => "pswd_changed",
+					);
+
+					// $token = activationCode("code");
+
+					$data = array(
+						0 => 'NULL',
+						1 => $id_user,
+						2 => "'empty'",
+						3 => 0,
+					);
+					registro_nuevo("activations", $data, $columns);
+					header("Location: ".$up_dir);
+				}
 				break;
 
 			case "customer-restore":
@@ -241,6 +310,40 @@
 					2 => "INNER JOIN $tbl2 ON $tbl.`permission`=$tbl2.`id` WHERE $tbl.`deleted_at` IS NOT NULL "
 				);
 				echo dataTable($_POST, $columns, $col_clean, $sql_data);
+				break;
+
+			case "edit-account":
+				$password = null;
+				if( isset($_POST["password"]) && !empty($_POST["password"]) )
+					$password = $_POST["password"];
+
+				$columns = array(
+					0 => "name",
+					1 => "first_name",
+					2 => "last_name",
+					3 => "username",
+					4 => "email",
+				);
+				if( isset($password) )
+					$columns[] = "password";
+
+				$columns[] = "permission";
+
+				$data = array(
+					0 => $_POST["name"],
+					1 => $_POST["first_name"],
+					2 => $_POST["last_name"],
+					3 => $_POST["username"],
+					4 => $_POST["email"],
+				);
+				if( isset($password) )
+					$data[] = cryptBlowfish($password);
+
+				$data[] = $_POST["permission"];
+				$tbl = "users";
+				// var_dump($data); exit();
+				updateData($_POST["which"], $columns, $data, $tbl);
+				header("Location: ".$up_dir."admin/account");
 				break;
 
 			case "create-masload":

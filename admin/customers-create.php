@@ -4,7 +4,7 @@ ini_set("display_errors", "On");
 	include("../php/db/conn.php");
 	include("../php/db/auth.php");
 	
-	if( authCheck() && user()["permission"]==1 ) {
+	if( authCheck() && user()["permission"]==1 && userAccess()["users"]==1 ) {
 		$mysqli = conectar_db();
 		selecciona_db($mysqli);
 ?>
@@ -12,7 +12,7 @@ ini_set("display_errors", "On");
 <html lang="es">
 <head>
 	<?php
-		$title="Crear cliente";
+		$title="Crear usuario";
 		$copy_year = date("Y",strtotime("today"));
 		include("structure/head.php");
 	?>
@@ -35,7 +35,7 @@ ini_set("display_errors", "On");
 						<div class="card">
 							<div class="card-header bg-blue text-white">
 								<i class="fa fa-fw fa-pencil-square-o"></i>
-								Creando cliente
+								Creando usuario
 							</div>
 							<div class="card-body">
 								<?php

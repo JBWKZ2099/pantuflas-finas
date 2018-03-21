@@ -13,10 +13,21 @@
 		mysqli_select_db($mysqli, DATABASE) or die ('No se pudo establecer la conexión con la Base de Datos, error: '.mysqli_error($mysqli));
 	}
 
-	function registro_nuevo($tabla, $datos, $columna){
+	function registro_nuevo($tabla, $datos, $columna, $validate_user){
 		$mysqli = conectar_db();
 		selecciona_db($mysqli);
 
+		if( isset($validate_user[0]) && !empty($validate_user[0]) && $validate_user[0] ) {
+			$check_user = "SELECT * FROM users WHERE email=$datos[5]";
+
+			$result = mysqli_query($mysqli, $check_user);
+			if( mysqli_num_rows($result)>0 ) {
+				session_start();
+				$_SESSION["error"]="El correo con el que intentaste registrar ya está en uso, por favor intenta con otro";
+				header( "Location: ".$validate_user[1] );
+			}
+		}
+		
 		$Consulta = "INSERT INTO $tabla VALUES (";
 			for ($i=0; $i < count($datos); $i++) { 
 				$Consulta = $Consulta.$datos[$i];
@@ -25,6 +36,8 @@
 			}
 			$Consulta.=")";
 
+		// var_dump($Consulta);
+		// exit();
 		$pConsulta = consulta_tb($mysqli, $Consulta);
 		session_start();
 		if (!$pConsulta) {
@@ -221,5 +234,24 @@
 		date_default_timezone_set("UTC");
 		date_default_timezone_set("America/Mexico_City");
 		return date("Y-m-d H:i:s");
+	}
+
+	function activationCode($type) {
+		if( $type=="code" ) {
+			$length = 32;
+			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < $length; $i++)
+	      $randomString .= $characters[rand(0, $charactersLength - 1)];
+		} else {
+			$length = 8;
+			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < $length; $i++)
+	      $randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+    return $randomString;
 	}
 ?>

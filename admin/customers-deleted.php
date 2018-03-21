@@ -3,13 +3,13 @@
 	include("../php/db/conn.php");
 	include("../php/db/auth.php");
 	
-	if( authCheck() ) {
+	if( authCheck() && user()["permission"]==1 && userAccess()["users"]==1 ) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<?php
-		$title="Clientes";
+		$title="Usuarios";
 		$copy_year = date("Y",strtotime("today"));
 		include("structure/head.php");
 	?>
@@ -63,7 +63,7 @@
 						<div class="card">
 							<div class="card-header bg-blue text-white">
 								<i class="fa fa-fw fa-user-circle"></i>
-								Lista de históricos
+								Lista de usuarios
 							</div>
 							<div class="card-body">
 								<?php

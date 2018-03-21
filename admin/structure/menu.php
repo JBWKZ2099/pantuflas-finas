@@ -86,7 +86,7 @@
     </ul>
   </li>
   <?php } ?>
-  <?php if( userAccess()["my_account"]==1 ) { ?>
+  <?php if( userAccess()["my_account"]==1 /*&& user()["permission"]!=1*/ ) { ?>
   <li class="nav-item <?php if( $active_menu=="manteinance_mn" ) echo "active"; ?>" data-toggle="tooltip" data-placement="right" title="Solicitud">
     <a class="nav-link nav-link-collapse <?php if( $active_menu=="manteinance_mn" ) echo ""; else echo "collapsed"; ?>" data-toggle="collapse" href="#myaccountCollapse" data-parent="#exampleAccordion">
       <i class="fa fa-fw fa-user"></i>
@@ -95,7 +95,7 @@
     </a>
     <ul class="sidenav-second-level collapse <?php if( $collapse=="myaccount" ) echo "show"; ?>" id="myaccountCollapse">
       <li <?php if( $active_opt=="myaccount-edit" ) echo "class='active'"; ?>>
-        <a href="<?php echo $abs_path."/"; ?>myaccount-edit">Modificar información</a>
+        <a href="<?php echo $abs_path."/"; ?>account">Modificar información</a>
       </li>
     </ul>
   </li>

@@ -10,7 +10,7 @@
 	 */
 	$abs_path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
 
-	$app_name = "base-b4";
+	$app_name = "pantuflas";
 
 	switch( $abs_path ) {
 		case "http://localhost":
@@ -60,7 +60,7 @@
 <script>
 	/*var direction = "http://216.108.227.105/~reactordm";*/
 	// var direction = "https://reactordemercados.com";
-	var direction = "http://base.test";
+	var direction = "http://pantuflas.test";
 </script>
 
 <?php
@@ -68,6 +68,6 @@
 	$path = pathinfo( $query );
 	$current = str_replace(".php", "", $path['basename']);
 
-	if( $current!=login )
+	if( $current!="login" )
 		include("../php/db/session.php");
 ?>

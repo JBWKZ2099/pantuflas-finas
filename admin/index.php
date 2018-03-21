@@ -20,7 +20,15 @@
 	
 	<div class="content-wrapper">
 		<div class="contianer-fluid">
-			Bienvenido
+			<div class="col-md-12">
+				<?php
+					include("../alerts/errors.php");
+					include("../alerts/success.php");
+				?>
+			</div>
+			<div class="col-md-12">
+				Bienvenido
+			</div>
 		</div>
 	</div>
 

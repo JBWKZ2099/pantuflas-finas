@@ -4,7 +4,7 @@ ini_set("display_errors", "On");
 	include("../php/db/conn.php");
 	include("../php/db/auth.php");
 	
-	if( authCheck() && user()["permission"]==1 ) {
+	if( authCheck() && user()["permission"]==1 && userAccess()["users"]==1 ) {
 		if( isset($_GET["id"]) ) {
 			$id = (int)$_GET["id"];
 			$table = "users";
@@ -22,7 +22,7 @@ ini_set("display_errors", "On");
 <html lang="es">
 <head>
 	<?php
-		$title="Viendo cliente";
+		$title="Viendo usuario";
 		$copy_year = date("Y",strtotime("today"));
 		include("structure/head.php");
 	?>
@@ -43,7 +43,7 @@ ini_set("display_errors", "On");
 						<div class="card">
 							<div class="card-header bg-blue text-white">
 								<i class="fa fa-fw fa-info-circle"></i>
-								Viendo cliente
+								Viendo usuario
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">

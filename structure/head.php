@@ -24,6 +24,7 @@
 			break;
 	}
   // $path = $_SERVER['HTTP_HOST'] == 'localhost:8888' ? '/fabricadesoluciones.com/' : '';
+  session_start();
 ?>
 <link rel="shortcut icon" href="http://placehold.it/64.png"/>
 <meta charset="UTF-8">
