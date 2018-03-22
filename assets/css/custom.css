@@ -60,7 +60,23 @@ a, button, .btn { transition: 0.2s; }
 /*Padding*/
 .bg-default { background-color: #eee; border: 1px solid #ddd; }
 .bg-default-02 { background-color: #ddd; border: 1px solid #ccc; }
+.bg-yellow-light { background-color: #e8e8ce; }
+.bg-black { background-color: #000; }
 .text-black { color: #000; }
+
+.btn-noradius { border-radius: 0 !important; }
+.btn-yellow-light {
+	color: #000;
+	background-color: #e8e8ce;
+	border: 1px solid #e8e8ce;
+}
+.btn-yellow-light:hover,
+.btn-yellow-light:active,
+.btn-yellow-light:focus {
+	color: #e8e8ce;
+	background-color: #000;
+	border-color: #000
+}
 
 @media( min-width: 1200px ) { .container-custom, .nb-container { width: 1200px !important; max-width: 1200px !important; } }
 @media( max-width: 991px ) {
@@ -167,11 +183,79 @@ a, button, .btn { transition: 0.2s; }
 /*=============================================================================
 NAVBAR
 =============================================================================*/
+.bg-navbar-01 { left: 0; z-index: 0; }
+.bg-navbar-02 { right: 0; z-index: 0; }
 .navbar {
+	width: 100%;
+	margin-top: 1.5rem;
 	margin-bottom: 0;
 	border: none;
 	border-radius: 0;
+	padding: 0 1rem;
+	position: fixed;
+	z-index: 991;
 }
+.navbar-nav { margin-left: 5rem; }
+.navbar-nav li { margin-right: 1.5rem; }
+.navbar-nav li:last-child { margin-right: 0; }
+/*=============================================================================
+INDEX
+=============================================================================*/
+.c-caption {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+#home-carousel .carousel-item .container-custom {
+	position: absolute !important;
+	top: 0;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+.h1-bigger { font-size: 3.5rem; }
+.carousel-contact-btn {
+	width: 100%;
+	bottom: 20%;
+	position: absolute;
+}
+/*=============================================================================
+MEDIA QUERIES
+=============================================================================*/
+@media( max-width: 990px ) {
+	#home-carousel .carousel-item img { display: none !important; }
+	#home-carousel { height: 100vh; }
+	#home-carousel .carousel-item {
+		background-image: url("http://placehold.it/1900x900.jpg?ytext=1900x900.jpg");
+		height: 100vh;
+		min-height: 480px;
+		background-repeat: no-repeat;
+		background-position: center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	.h1-bigger { font-size: 2.8rem; }
+}
+@media( max-width: 767px ) {
+	.h1-bigger { font-size: 2rem; }
+	.navbar {
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
+		/*position: relative;*/
+	}
+	.navbar-collapse { margin-left: -1rem; margin-right: -1rem; }
+	.navbar-nav { margin-left: 0; background-color: #000; }
+}
+
 /*=============================================================================
 BLOG
 =============================================================================*/

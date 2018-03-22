@@ -28,7 +28,7 @@
 ?>
 <link rel="shortcut icon" href="http://placehold.it/64.png"/>
 <meta charset="UTF-8">
-<title> <?php echo $view_name; ?> | site_name </title>
+<title> <?php echo $view_name; ?> | Pantuflas Finas </title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <?php /* CSS Tags */ ?>

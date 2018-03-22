@@ -22,7 +22,7 @@
 		$up_dir = 0; for( $i01=1; $i01<=$up_dir; $i01++ ) { $dir.="../"; }
 	?>
 	<?php
-		$view_name="title";
+		$view_name="Inicio";
 		include(/*$dir.*/"structure/head.php");
 		$asset = "assets/img/folder_name/"; // Path where are storaged media files (img, video, etc)
 	?>
@@ -30,13 +30,31 @@
 <body>
 	<?php $active="index"; include(/*$dir.*/"structure/navbar.php") ?>
 
-	<section class="bg-default-02 pt-60 pb-60">
-		<div class="container-custom">
-			<div class="row">
-				<div class="col-md-12">CONTENT</div>
-			</div>
-		</div>
-	</section>
+	<div id="home-carousel" class="carousel slide" data-ride="carousel">
+	  <div class="carousel-inner">
+	    <div class="carousel-item relativer active">
+	      <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?ytext=1900x900.jpg" alt="Cover">
+	      
+	      <div class="container-custom h-100">
+	      	<div class="row">
+			      <div class="c-caption">
+			      	<h1 class="text-white text-center text-md-left h1-bigger">
+			      		UNA VIDA <br class="d-none d-md-block">
+			      		CONFORTABLE <br class="d-none d-md-block">
+			      		ES UNA VIDA FELIZ
+			      	</h1>
+			      </div>
+			     </div>
+	      	
+	      	<div class="row justify-content-center carousel-contact-btn">
+	      		<div class="col-md-3">
+	      			<a href="#" class="btn btn-yellow-light btn-block btn-noradius">CONTACTO</a>
+	      		</div>
+	      	</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<?php include(/*$dir.*/"structure/footer.php") ?>
 </body>

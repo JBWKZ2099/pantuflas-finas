@@ -10,7 +10,7 @@
 <script src="assets/js/foot.js"></script>
 
 
-<?php if( isset($_SESSION["old_password"]) && !empty($_SESSION["old_password"]) ) { ?>
+<?php if( !isset($_SESSION["old_password"]) && !empty($_SESSION["old_password"]) ) { ?>
 	<?php print_r($_SESSION) ?>
 	<!-- Modal -->
 	<div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
