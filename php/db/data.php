@@ -2,9 +2,9 @@
 	$server = false;
 	if( $server ) {
 		define('SERVER','localhost');
-		define('USER', 'rdm_usr');
-		define('PASSWORD', 'pu68GeyGlDEI');
-		define('DATABASE', 'rdm_db');
+		define('USER', 'pantufl2_usr');
+		define('PASSWORD', 'M7EpT4fv8TLl');
+		define('DATABASE', 'pantufl2_db');
 	} else {
 		define('SERVER','localhost');
 		define('USER', 'root');
