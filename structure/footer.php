@@ -1,8 +1,28 @@
-<footer class="pt-60 pb-60 bg-default">
+<footer class="pt-3 pt-md-5 pb-3 pb-md-5 bg-black">
 	<div class="container-custom">
 		<div class="row">
-			<div class="col-sm-12">
-				Footer
+			<div class="col-sm-12 text-center">
+				<p class="text-white mb-3">
+					Av. Tezozomoc 106 <span class="ml-3 mr-3">|</span> Col. San Miguel Amantla <span class="ml-3 mr-3">|</span> CDMX <span class="ml-3 mr-3">|</span> Municipio Azcapotzalco <span class="ml-3 mr-3">|</span> C.P. 02700
+				</p>
+				 <p class="text-white">
+				 	Tel. (55) 52502999 Fax. (55)52541868
+				 </p>
+				 <p class="text-white mb-3">
+				 	astahlr@prodigy.net.mx erobles32@gmail.com
+				 </p>
+				 <p class="text-white">
+				 	FACTURACIÓN <span class="ml-3 mr-3">|</span> AVISO DE PRIVACIDAD
+				 </p>
+				
+				<div class="social">
+					<a href="#facebook" class="text-white mr-3">
+						<i class="fab fa-facebook fa-2x"></i>
+					</a>
+					<a href="#twitter" class="text-white">
+						<i class="fab fa-twitter fa-2x"></i>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

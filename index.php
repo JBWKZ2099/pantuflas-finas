@@ -2,33 +2,13 @@
 <html lang="es">
 <head>
 	<?php
-		/*
-		* Cambiar los valores de $up_dir dependiendo de en que nivel se encuentre
-		* la vista que se agregó, por ejemplo:
-		*	proyecto/
-		*	├── assets/
-		*	├── structure/
-		* ├── otra_carpeta/
-		* │   └── Subcarpeta/
-		* │   		├── archivo01.php -> En este caso $up_dir debe ser igual a 2
-		* │   		└── archivo02.php
-		*	└── carpeta_donde_hay_vistas/
-		*	    ├── archivo01.php -> En este caso $up_dir debe ser igual a 1
-		*	    ├── archivo02.php
-		*	    ├── archivo03.php
-		*	    ├── archivo04.php
-		*	    └── archivo05.php
-		*/
-		$up_dir = 0; for( $i01=1; $i01<=$up_dir; $i01++ ) { $dir.="../"; }
-	?>
-	<?php
 		$view_name="Inicio";
-		include(/*$dir.*/"structure/head.php");
+		include("structure/head.php");
 		$asset = "assets/img/folder_name/"; // Path where are storaged media files (img, video, etc)
 	?>
 </head>
 <body>
-	<?php $active="index"; include(/*$dir.*/"structure/navbar.php") ?>
+	<?php $active="index"; include("structure/navbar.php") ?>
 
 	<div id="home-carousel" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner">
@@ -53,9 +33,49 @@
 	      	</div>
 	      </div>
 	    </div>
+	    <div class="carousel-item relativer">
+	      <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=02 1900x900.jpg" alt="Cover">
+	    </div>
+	    <div class="carousel-item relativer">
+	      <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=03 1900x900.jpg" alt="Cover">
+	    </div>
 	  </div>
 	</div>
 
-	<?php include(/*$dir.*/"structure/footer.php") ?>
+	<section class="pt-60 pb-60 container-custom">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="mb-3 text-center"><strong>NOSOTROS</strong></h1>
+				<p class="text-justify mb-45">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, tempora dolores sapiente eius, at eaque veritatis provident nisi eum minima consequatur obcaecati reprehenderit dolorem, consectetur magni omnis sint iste dolor! <br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque modi, obcaecati est necessitatibus? Illo quaerat laudantium, at ducimus. Placeat laudantium, ut necessitatibus voluptatum dicta delectus nulla rem quis! Aspernatur, quia. <br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores non, qui libero accusantium in recusandae dignissimos? Id incidunt dolorum, laboriosam? Maiores veritatis pariatur, autem aliquid, provident enim amet possimus rem!
+				</p>
+				<h1 class="mb-3 mb-md-5 text-center"><strong>CATÁLOGO</strong></h1>
+				<div class="row justify-content-center">
+					<div class="col-md-6 mb-3 mb-md-0">
+						<img class="img-fluid d-block m-auto" src="http://placehold.it/600x450.jpg?text=600x450.jpg" alt="Lady">
+						<h4 class="text-center mt-3">PANTUFLAS PARA DAMA</h4>
+					</div>
+					<div class="col-md-6 mb-3">
+						<img class="img-fluid d-block m-auto" src="http://placehold.it/600x450.jpg?text=600x450.jpg" alt="Lady">
+						<h4 class="text-center mt-3">PANTUFLAS PARA CABALLERO</h4>
+					</div>
+
+					<div class="col-md-12">
+						<p class="text-justify">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-3 mb-3"></section>
+
+	<?php include("widgets/frm-cont.php"); ?>
+
+	<?php include("structure/footer.php") ?>
 </body>
 </html>

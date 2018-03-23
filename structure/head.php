@@ -51,3 +51,14 @@
 <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 <?php /*Script custom*/ ?>
 <script src="<?php echo $path; ?>assets/js/head.js"></script>
+
+<script src="https://www.google.com/recaptcha/api.js?hl=es&onload=renderCaptcha&render=explicit" async="async" defer="defer"></script>
+	<script>
+		var recaptcha;
+		var renderCaptcha = function() {
+			recaptcha = grecaptcha.render('recaptcha', {
+				'sitekey': '6LfhZE4UAAAAAGfSjcpK86Ci8WULqAx80vkdFRN8',
+				'theme': 'dark'
+			});
+		};
+	</script>

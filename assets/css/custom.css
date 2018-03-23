@@ -78,6 +78,19 @@ a, button, .btn { transition: 0.2s; }
 	border-color: #000
 }
 
+.btn-black {
+	color: #FFF;
+	background-color: #000;
+	border: 1px solid #000;
+}
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+	color: #000;
+	background-color: #FFF;
+	border-color: #FFF
+}
+
 @media( min-width: 1200px ) { .container-custom, .nb-container { width: 1200px !important; max-width: 1200px !important; } }
 @media( max-width: 991px ) {
 	h1 { font-size: 2rem; }
@@ -195,7 +208,7 @@ NAVBAR
 	position: fixed;
 	z-index: 991;
 }
-.navbar-nav { margin-left: 5rem; }
+.navbar-nav { margin-left: 6rem; }
 .navbar-nav li { margin-right: 1.5rem; }
 .navbar-nav li:last-child { margin-right: 0; }
 /*=============================================================================
@@ -224,6 +237,26 @@ INDEX
 	width: 100%;
 	bottom: 20%;
 	position: absolute;
+}
+.social {
+	position: absolute;
+	right: 5%;
+	bottom: 0;
+}
+/*=============================================================================
+FOOTER
+=============================================================================*/
+.social a:hover { text-decoration: none; }
+.social a svg {
+	-webkit-transition: .2s;
+	-o-transition: .2s;
+	transition: .2s;
+}
+.social a:hover svg {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
 }
 /*=============================================================================
 MEDIA QUERIES
