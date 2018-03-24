@@ -50,7 +50,7 @@
 <?php /*Scroll reveal*/ ?>
 <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 <?php /*Script custom*/ ?>
-<script src="<?php echo $path; ?>assets/js/head.js"></script>
+<script type="text/javascript" src="<?php echo $path; ?>assets/js/head.js" defer></script>
 
 <script src="https://www.google.com/recaptcha/api.js?hl=es&onload=renderCaptcha&render=explicit" async="async" defer="defer"></script>
 	<script>

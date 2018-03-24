@@ -1,11 +1,21 @@
 <?php
 	function act($item, $active) { echo $item == $active ? " active" : ""; }
-	$items = json_decode(json_encode(array(
-		array("active" => "index", "link" => "#", "word" => "NOSOTROS", "sub" => 0),
-		array("active" => "link", "link" => "#", "word" => "CATÁLOGO", "sub" => 0),
-		array("active" => "link", "link" => "#", "word" => "PEDIDOS", "sub" => 0),
-		array("active" => "disabled", "link" => "#", "word" => "PEDIDOS", "sub" => 0),
-	)), FALSE);
+	
+	if( $active!="pedidos" ) {
+		$items = json_decode(json_encode(array(
+			array("active" => "none", "link" => "#", "word" => "NOSOTROS", "data_target" => "#nosotros"),
+			array("active" => "none", "link" => "#", "word" => "CATÁLOGO", "data_target" => "#catalogo"),
+			array("active" => "pedidos", "link" => "pedidos", "word" => "PEDIDOS", "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "#", "word" => "CONTACTO", "data_target" => "#contacto"),
+		)), FALSE);
+	} else {
+		$items = json_decode(json_encode(array(
+			array("active" => "none", "link" => "index#nosotros", "word" => "NOSOTROS", "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "index#catalogo", "word" => "CATÁLOGO", "data_target" => "no-parallax"),
+			array("active" => "pedidos", "link" => "pedidos", "word" => "PEDIDOS", "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "index#contacto", "word" => "CONTACTO", "data_target" => "no-parallax"),
+		)), FALSE);
+	}
 ?>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -21,10 +31,10 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+			<ul id="parallax-navbar" class="navbar-nav mr-auto">
 				<?php foreach($items as $item) { ?>
 					<li class='nav-item<?php act($item->active, $active) ?>'>
-						<a class='nav-link text-center text-white' href='<?php echo $path.$item->link; ?>'><?php echo $item->word ?></a>
+						<a class='nav-link text-center text-white' href='<?php echo $path.$item->link; ?>' data-target="<?php echo $item->data_target; ?>"><?php echo $item->word ?></a>
 					</li>
 				<?php } ?>
 			</ul>

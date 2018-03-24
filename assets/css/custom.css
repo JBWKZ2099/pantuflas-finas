@@ -196,6 +196,9 @@ a, button, .btn { transition: 0.2s; }
 /*=============================================================================
 NAVBAR
 =============================================================================*/
+.navbar .nav-item a { border-bottom: 2px solid transparent; }
+.navbar .nav-item.active a,
+.navbar .nav-item:hover a { border-bottom: 2px solid #FFF; }
 .bg-navbar-01 { left: 0; z-index: 0; }
 .bg-navbar-02 { right: 0; z-index: 0; }
 .navbar {
@@ -205,9 +208,10 @@ NAVBAR
 	border: none;
 	border-radius: 0;
 	padding: 0 1rem;
-	position: fixed;
+	position: absolute;
 	z-index: 991;
 }
+.navbar-fixed-custom { position: fixed !important; margin-top: 0; }
 .navbar-nav { margin-left: 6rem; }
 .navbar-nav li { margin-right: 1.5rem; }
 .navbar-nav li:last-child { margin-right: 0; }
@@ -243,6 +247,15 @@ INDEX
 	right: 5%;
 	bottom: 0;
 }
+.whatsapp-contact {
+	color: white !important;
+	background-color: #4fbf49;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 1000;
+	text-decoration: none !important;
+}
 /*=============================================================================
 FOOTER
 =============================================================================*/
@@ -265,7 +278,7 @@ MEDIA QUERIES
 	#home-carousel .carousel-item img { display: none !important; }
 	#home-carousel { height: 100vh; }
 	#home-carousel .carousel-item {
-		background-image: url("http://placehold.it/1900x900.jpg?ytext=1900x900.jpg");
+		/*background-image: url("http://placehold.it/1900x900.jpg?text=1900x900.jpg");*/
 		height: 100vh;
 		min-height: 480px;
 		background-repeat: no-repeat;
@@ -278,6 +291,7 @@ MEDIA QUERIES
 	.h1-bigger { font-size: 2.8rem; }
 }
 @media( max-width: 767px ) {
+	.navbar-nav li { margin: 0; }
 	.h1-bigger { font-size: 2rem; }
 	.navbar {
 		padding-top: 0;
@@ -285,10 +299,33 @@ MEDIA QUERIES
 		margin-top: 0;
 		/*position: relative;*/
 	}
+	#home-carousel .carousel-item {
+		-webkit-background-size: 1000px;
+		-moz-background-size: 1000px;
+		-o-background-size: 1000px;
+		background-size: 1000px;
+	}
 	.navbar-collapse { margin-left: -1rem; margin-right: -1rem; }
 	.navbar-nav { margin-left: 0; background-color: #000; }
+	.social { position: relative; right: 0; margin-top: 1rem; }
 }
-
+@media( max-width: 576px ) {
+	form .btn-black { display: block !important; width: 100%; }
+	#home-carousel,
+	#home-carousel .carousel-item { height: 300px; min-height: auto; }
+	#home-carousel .carousel-item {
+		-webkit-background-size: 800px;
+		-moz-background-size: 800px;
+		-o-background-size: 800px;
+		background-size: 800px;
+	}
+	#recaptcha {
+		-webkit-transform: scale(0.9);
+		-ms-transform: scale(0.9);
+		-o-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+}
 /*=============================================================================
 BLOG
 =============================================================================*/

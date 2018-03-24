@@ -1,10 +1,10 @@
-<section class="pt-60 pb-60 bg-yellow-light">
+<section id="contacto" class="pt-60 pb-60 bg-yellow-light">
 	<div class="container-custom">
 		<div class="row mb-45">
 			<div class="col-md-12">
 				<form action="<?php echo $path; ?>php/mailer/mail.php" method="POST">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-6 mb-3 mb-md-0">
 							<div class="row h-100">
 								<div class="col-md-12 align-self-start">
 									<div class="form-group">
@@ -28,11 +28,11 @@
 							</div>
 
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-6 mb-3 mb-md-3">
 									<div id="recaptcha"></div>
 								</div>
 								<div class="col-md-6 align-self-end">
-									<button type="submit" class="btn btn-black btn-noradius pl-5 pr-5 float-right">Enviar</button>
+									<button type="submit" class="btn btn-black btn-noradius pl-5 pr-5 float-sm-right">Enviar</button>
 								</div>
 							</div>
 						</div>
