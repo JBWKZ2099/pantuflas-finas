@@ -43,7 +43,7 @@
 	  </div>
 	</div>
 
-	<section class="pt-60 pb-60 container-custom">
+	<section class="pt-60 pb-60 bg-gray-light container-custom">
 		<div class="row">
 			<div class="col-md-12">
 				<h1 id="nosotros" class="mb-3 text-center"><strong>NOSOTROS</strong></h1>

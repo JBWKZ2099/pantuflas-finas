@@ -58,8 +58,7 @@ a, button, .btn { transition: 0.2s; }
 .plr-45 { padding: 0 2.85rem; }
 .plr-60 { padding: 0 4rem; }
 /*Padding*/
-.bg-default { background-color: #eee; border: 1px solid #ddd; }
-.bg-default-02 { background-color: #ddd; border: 1px solid #ccc; }
+.bg-gray-light { background-color: #f1f1f1; }
 .bg-yellow-light { background-color: #e8e8ce; }
 .bg-black { background-color: #000; }
 .text-black { color: #000; }
@@ -255,6 +254,23 @@ INDEX
 	bottom: 0;
 	z-index: 1000;
 	text-decoration: none !important;
+}
+/*=============================================================================
+PEDIDOS
+=============================================================================*/
+.pedidos-title {
+	background-color: #e8e8ce;
+	padding: 1rem;
+	position: absolute;
+	top: -10rem;
+	z-index: 990;
+	border-radius: 20px 20px 0 0;
+	-webkit-box-shadow: 0 15px 0px 0px #e8e8ce, 0 -9px 0px 0px #e8e8ce, 3px 0 15px -4px rgba(0,0,0,0.8), -3px 0 15px -4px rgba(0,0,0,0.8);
+	box-shadow: 0 15px 0px 0px #e8e8ce, 0 -9px 0px 0px #e8e8ce, 3px 0 15px -4px rgba(0,0,0,0.8), -3px 0 15px -4px rgba(0,0,0,0.8);
+}
+.products-container img {
+	border: 2px solid #abac9b;
+	border-radius: 4px;
 }
 /*=============================================================================
 FOOTER
