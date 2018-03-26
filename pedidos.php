@@ -13,7 +13,7 @@
 	<div id="pedidos-carousel" class="carousel" data-ride="carousel">
 	  <div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img class="d-block w-100" src="http://placehold.it/1900x800.jpg?text=02 1900x800.jpg" alt="Cover">
+	      <img class="d-block w-100" src="http://placehold.it/1900x800.jpg?text=1900x800.jpg" alt="Cover">
 	    </div>
 	  </div>
 	</div>
@@ -28,7 +28,7 @@
 		  </div>
 
 			<div class="row pt-30 products-container">
-				<div class="col-md-6">
+				<div class="col-md-6 mb-3 mb-md-0">
 					<img class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=600x360.jpg" alt="">
 				</div>
 				<div class="col-md-6">
@@ -59,16 +59,111 @@
 					</p>
 
 					<div class="row mt-3">
-						<div class="col-md-4">
+						<div class="col-md-4 mb-3 mb-md-0">
 							<img class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=600x360.jpg" alt="">
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4 mb-3 mb-md-0">
 							<img class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=600x360.jpg" alt="">
 						</div>
 						<div class="col-md-4">
 							<img class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=600x360.jpg" alt="">
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<div class="row pt-3">
+				<div class="col-md-12">
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination pagination-lg pagination-custom">
+					    <li class="page-item"><a class="page-link" href="#">
+					    	<i class="fas fa-caret-left"></i>
+					    </a></li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item"><a class="page-link" href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">
+					    	<i class="fas fa-caret-right"></i>
+					    </a></li>
+					  </ul>
+					</nav>
+				</div>
+			</div>
+
+			<div class="row pt-3">
+				<div class="col-md-12 bg-blue-dark pt-3">
+					<form action="" method="POST" class="pedidos-form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="CLIENTE:">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="MODÉLO:">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="ESTILO:">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="TEMPORADA">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="COLOR">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="NÚMERO">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="CANTIDAD">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea rows="9" class="form-control" placeholder="LISTA:"></textarea>
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<button class="btn btn-blue">ELIMINAR</button>
+									</div>
+									<div class="col-md-3 text-right mb-3">
+										<p class="text-white"><strong>SUBTOTAL</strong></p>
+									</div>
+									<div class="col-md-12"></div>
+									<div class="col-md-3 text-right offset-3 mb-3">
+										<p class="text-white"><strong>IVA</strong></p>
+									</div>
+									<div class="col-md-12"></div>
+									<div class="col-md-3 text-right offset-3 mb-3">
+										<p class="text-white"><strong>TOTAL</strong></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<button class="btn btn-blue mb-3 float-right">AGREGAR</button>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<button class="btn btn-blue mb-3 float-right">LEVANTAR PEDIDO</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

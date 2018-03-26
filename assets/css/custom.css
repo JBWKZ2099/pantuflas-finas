@@ -60,6 +60,7 @@ a, button, .btn { transition: 0.2s; }
 /*Padding*/
 .bg-gray-light { background-color: #f1f1f1; }
 .bg-yellow-light { background-color: #e8e8ce; }
+.bg-blue-dark { background-color: #171733; }
 .bg-black { background-color: #000; }
 .text-black { color: #000; }
 
@@ -88,6 +89,14 @@ a, button, .btn { transition: 0.2s; }
 	color: #000;
 	background-color: #FFF;
 	border-color: #FFF
+}
+
+.btn-blue {
+	background-color: transparent;
+	color: #FFF;
+	border: none;
+	font-weight: bold;
+	padding: 0;
 }
 
 @media( min-width: 1200px ) { .container-custom, .nb-container { width: 1200px !important; max-width: 1200px !important; } }
@@ -254,7 +263,12 @@ INDEX
 	bottom: 0;
 	z-index: 1000;
 	text-decoration: none !important;
+	opacity: 0.5;
+	transition: .2s;
 }
+.whatsapp-contact:active,
+.whatsapp-contact:focus,
+.whatsapp-contact:hover { opacity: 1; }
 /*=============================================================================
 PEDIDOS
 =============================================================================*/
@@ -271,6 +285,12 @@ PEDIDOS
 .products-container img {
 	border: 2px solid #abac9b;
 	border-radius: 4px;
+}
+.pedidos-form input, .pedidos-form textarea { border-radius: 0; border: none; }
+.pagination-custom * {
+	color: #b6b194;
+	background-color: transparent !important;
+	border: none;
 }
 /*=============================================================================
 FOOTER
@@ -324,6 +344,27 @@ MEDIA QUERIES
 	.navbar-collapse { margin-left: -1rem; margin-right: -1rem; }
 	.navbar-nav { margin-left: 0; background-color: #000; }
 	.social { position: relative; right: 0; margin-top: 1rem; }
+
+	#pedidos-carousel .carousel-item {
+		height: 300px;
+		background: no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	#pedidos-carousel .carousel-item {
+		background-image: url("http://placehold.it/1900x800.jpg?text=1900x800.jpg");
+	}
+	#pedidos-carousel img { display: none !important; }
+	.pedidos-title {
+		left: 0;
+		top: 0;
+		position: relative;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.whatsapp-contact { opacity: 1 !important; }
 }
 @media( max-width: 576px ) {
 	form .btn-black { display: block !important; width: 100%; }
