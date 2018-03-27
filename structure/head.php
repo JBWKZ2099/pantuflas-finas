@@ -49,8 +49,9 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <?php /*Scroll reveal*/ ?>
 <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
 <?php /*Script custom*/ ?>
-<script type="text/javascript" src="<?php echo $path; ?>assets/js/head.js" defer></script>
+<script type="text/javascript" src="<?php echo $path; ?>assets/js/head.js" defer="defer"></script>
 
 <script src="https://www.google.com/recaptcha/api.js?hl=es&onload=renderCaptcha&render=explicit" async="async" defer="defer"></script>
 	<script>

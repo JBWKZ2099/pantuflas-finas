@@ -24,6 +24,11 @@ $(document).ready(function() {
 			},800);
 		}
 	});
+	
+	$("#scroll-contact").click(function(e){
+		e.preventDefault();
+		$("a.nav-link[data-target='#contacto']").trigger("click");
+	});
 });
 
 /**
