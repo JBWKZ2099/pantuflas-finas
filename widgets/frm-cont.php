@@ -2,7 +2,14 @@
 	<div class="container-custom">
 		<div class="row mb-45">
 			<div class="col-md-12">
+				<?php include("alerts/success.php"); ?>
+				<?php include("alerts/errors.php"); ?>
+			</div>
+			<div class="col-md-12">
 				<form action="<?php echo $path; ?>php/mailer/mail.php" method="POST">
+
+					<input type="hidden" name="recaptcha" value="1">
+					
 					<div class="row">
 						<div class="col-md-6 mb-3 mb-md-0">
 							<div class="row h-100">
