@@ -46,9 +46,6 @@
 						<strong>TALLAS:</strong> 26 al 30
 					</p>
 					<p>
-						<strong>Colores:</strong> Café
-					</p>
-					<p>
 						<strong>Descripción:</strong> Pantuflas con talón 2
 					</p>
 					<p>
@@ -60,6 +57,12 @@
 					<p>
 						<strong>Categoría:</strong> Confort Caballero
 					</p>
+
+					<div class="row mt-3">
+						<?php for( $i=1; $i<=3; $i++ ) { ?>
+							<div class="available-color"></div>
+						<?php } ?>
+					</div>
 
 					<div class="row mt-3" id="gallery_01">
 						<?php for( $i=1; $i<=3; $i++ ) { ?>

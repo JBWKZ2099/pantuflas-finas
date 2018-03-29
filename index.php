@@ -14,25 +14,18 @@
 	  <div class="carousel-inner">
 	    <div class="carousel-item active" style="background-image:url('<?php echo $path.$asset."01.jpg" ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=1900x900.jpg" alt="Cover"> -->
-	      <div class="relativer h-100">
-		      <div class="container-custom h-100">
-		      	<div class="row">
-				      <div class="c-caption pl-3 pr-3">
-				      	<h1 class="text-white text-center text-md-left h1-bigger mb-3 mb-md-0">
-				      		UNA VIDA <br class="d-none d-md-block">
-				      		CONFORTABLE <br class="d-none d-md-block">
-				      		ES UNA VIDA FELIZ
-				      	</h1>
-				      </div>
-				     </div>
-		      	
-		      	<div class="row justify-content-center carousel-contact-btn">
-		      		<div class="col-md-3">
-		      			<a id="scroll-contact" href="#" class="btn btn-yellow-light btn-block btn-noradius">CONTACTO</a>
-		      		</div>
-		      	</div>
-		      </div>
-		     </div>
+	      <div class="carousel-caption text-center">
+	      	<div class="col-md-12 mb-3">
+	      		<div class="row justify-content-center">
+	      			<div class="col-md-3">
+	      				<a id="scroll-contact" href="#" class="btn btn-yellow-light btn-block btn-noradius">CONTACTO</a>
+	      			</div>
+	      		</div>
+	      	</div>
+	      	<h1 class="text-white mb-3 mb-md-0">
+				    UNA VIDA CONFORTABLE ES UNA VIDA FELIZ
+				  </h1>
+	      </div>
 	    </div>
 	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset."02.jpg" ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=02 1900x900.jpg" alt="Cover"> -->
@@ -55,7 +48,7 @@
 						Proporcionar a nuestros clientes locales y foráneos  una extensa variedad de pantuflas, con desempeño y servicio superiores al costo más competitivo para los usuarios (clientes).
 					</p>
 					
-					<div class="row justify-content-center mb-45">
+					<div class="row justify-content-center align-items-center mb-45">
 						<div class="col-md-2 mb-3 md-md-0">
 							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."liverpool.png" ?>" alt="liverpool.png">
 						</div>
@@ -63,10 +56,10 @@
 							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."palacio.png" ?>" alt="palacio.png">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."sams.png" ?>" alt="sams.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."chedraui.png" ?>" alt="chedraui.png">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."sanborns.png" ?>" alt="sanborns.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."soriana.png" ?>" alt="soriana.png">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
 							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."sears.png" ?>" alt="sears.png">
@@ -86,12 +79,6 @@
 								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."catalogo_caballero.png" ?>" alt="Gentleman">
 							</a>
 							<h4 class="text-center mt-3">PANTUFLAS PARA CABALLERO</h4>
-						</div>
-
-						<div class="col-md-12">
-							<p class="text-justify">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia ullam corrupti asperiores fugiat doloribus. Voluptatibus doloremque, dolorum hic perferendis in nostrum, debitis obcaecati quae, rem eius dolorem! Quisquam, provident.
-							</p>
 						</div>
 					</div>
 				</div>
