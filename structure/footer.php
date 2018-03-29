@@ -5,22 +5,19 @@
 				<p class="text-white mb-3">
 					Av. Tezozomoc 106 <span class="ml-3 mr-3">|</span> Col. San Miguel Amantla <span class="ml-3 mr-3">|</span> CDMX <span class="ml-3 mr-3">|</span> Municipio Azcapotzalco <span class="ml-3 mr-3">|</span> C.P. 02700
 				</p>
-				 <p class="text-white">
+				 <p class="text-white mb-3">
 				 	Tel. <a href="tel:5552502999" class="text-white">(55) 52502999</a> Fax. (55)52541868
 				 </p>
-				 <p class="text-white mb-3">
-				 	<a class="text-white" href="mailto:astahlr@prodigy.net.mx">astahlr@prodigy.net.mx</a> <a class="text-white" href="mailto:erobles32@gmail.com">erobles32@gmail.com</a>
-				 </p>
 				 <p class="text-white">
-				 	FACTURACIÓN <span class="ml-3 mr-3">|</span> <a href="<?php echo $path ?>aviso-privacidad" class="text-white">AVISO DE PRIVACIDAD</a>
+				 	<a href="<?php echo $path ?>aviso-privacidad" class="text-white">AVISO DE PRIVACIDAD</a>
 				 </p>
 				
 				<div class="social">
 					<a href="https://fb.com" class="text-white mr-3" target="_blank">
 						<i class="fab fa-facebook fa-2x"></i>
 					</a>
-					<a href="https://twitter.com" class="text-white" target="_blank">
-						<i class="fab fa-twitter fa-2x"></i>
+					<a href="https://www.instagram.com" class="text-white" target="_blank">
+						<i class="fab fa-instagram fa-2x"></i>
 					</a>
 				</div>
 			</div>

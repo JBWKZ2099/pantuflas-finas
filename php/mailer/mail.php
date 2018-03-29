@@ -72,7 +72,7 @@
 			$mensaje = $_POST["msg"];
 			$production = false;
 
-			$noreply = "direccion@pantuflasfinas.com.mx";
+			$noreply = "info@pantuflasfinas.com.mx";
 			$company = "Pantuflas Finas";
 
 			// GMail account
@@ -80,7 +80,7 @@
 			// 0Nq2Hrvo
 
 			if( $production )
-				$webmaster = "direccion@pantuflasfinas.com.mx";
+				$webmaster = "info@pantuflasfinas.com.mx";
 			else
 				$webmaster = "iramirez@fabricadesoluciones.com";
 			
