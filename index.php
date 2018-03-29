@@ -88,7 +88,7 @@
 
 	<section class="mt-3 mb-3"></section>
 
-	<a href="https://api.whatsapp.com/send?phone=5545934135" class="whatsapp-contact p-2 p-md-3" target="_blank">
+	<a href="https://api.whatsapp.com/send?phone=525545934135" class="whatsapp-contact p-2 p-md-3" target="_blank">
 		<span class="d-none d-md-block">Envíanos un mensaje de Whatsapp</span>
 		<i class="fab fa-whatsapp fa-2x d-block d-md-none"></i>
 	</a>
