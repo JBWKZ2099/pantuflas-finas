@@ -170,12 +170,20 @@
 					$permission = 2;
 				}
 
+    		$name = $_POST["name"];
+    		$last_n = $_POST["first_name"];
+
+    		include("../slug.lib.php");
+    		$last_n = slugger($last_n);
+
+    		$username = strtolower( substr($name, 0, 1) ).$last_n.".".rand(0,9999);
+
 				$data = array(
 					0 => 'NULL',
 					1 => "'".$_POST["name"]."'",
 					2 => "'".$_POST["first_name"]."'",
 					3 => "'".$_POST["last_name"]."'",
-					4 => "'".$_POST["username"]."'",
+					4 => "'".$username."'",
 					5 => "'".$_POST["email"]."'",
 					6 => "'".$password."'",
 					7 => "'".$permission."'",
@@ -184,8 +192,6 @@
 					10 => 'NULL',
 					11 => 'NULL',
 				);
-				// var_dump($columns);
-				// var_dump($data);
 				$validate_user = array(
 					0 => true,
 					1 => null,
@@ -196,13 +202,16 @@
 				else
 					$validate_user[1] = $up_dir."admin/login";
 
-				var_dump($validate_user);
+				// var_dump($validate_user);
+				// var_dump($columns);
+				// var_dump($data);
+				// die();
 
 				registro_nuevo($tbl, $data, $columns, $validate_user);
-				
+
 				$mysqli = conectar_db();
 				selecciona_db($mysqli);
-				$get_user = "SELECT id FROM users WHERE username='".$_POST["username"]."'";
+				$get_user = "SELECT id FROM users WHERE username='".$username."'";
 				$gu_result = mysqli_query($mysqli, $get_user);
 				$id_user = mysqli_fetch_array($gu_result)["id"];
 
@@ -259,6 +268,7 @@
 					);
 					// var_dump($columns2);
 					// var_dump($data2);
+					// exit();
 					registro_nuevo("access", $data2, $columns2);
 					header("Location: ".$up_dir."admin/customers-create");
 				} else {
@@ -278,8 +288,35 @@
 						2 => "'empty'",
 						3 => 0,
 					);
+					// var_dump($columns);
+					// var_dump($data);
+					// die();
 					registro_nuevo("activations", $data, $columns);
-					header("Location: ".$up_dir);
+
+					$reg_access = array(
+						0 => 'NULL',
+						1 => $id_user,
+						2 => "1",
+						3 => "0",
+						4 => "0",
+						5 => "0",
+						6 => "0",
+						7 => "1",
+						8 => "0",
+					);
+					registro_nuevo("access", $reg_access, $columns);
+
+					$body = "
+						<p>Hola ".$_POST["name"]." ".$_POST["first_name"]."</p>
+						<p>Tu nombre de usuario es: ".$username."</p>
+						<p>Y tu contraseña es: ".$_SESSION["old_password"]."</p> <br>
+						<p>Te recomendamos ampliamente que la actualices en cuanto inicies sesión.</p>
+					";
+					// mailNotification($_POST["email"],$subject,$body);
+					loginAfterReg($username);
+
+					// print_r($_SESSION); exit();
+					header("Location: ".$up_dir."admin/");
 				}
 				break;
 
@@ -310,6 +347,30 @@
 					2 => "INNER JOIN $tbl2 ON $tbl.`permission`=$tbl2.`id` WHERE $tbl.`deleted_at` IS NOT NULL "
 				);
 				echo dataTable($_POST, $columns, $col_clean, $sql_data);
+				break;
+
+			case "update-password":
+				$password = cryptBlowfish($_POST["new-password"]);
+				$token = activationCode("code");
+
+				$columns = array( "password" );
+				$data = array( $password );
+
+				$mysqli = conectar_db();
+				selecciona_db($mysqli);
+				$get_user = "SELECT id FROM users WHERE email='".$_POST["mail-user"]."'";
+				$gu_result = mysqli_query($mysqli, $get_user);
+				$id_user = mysqli_fetch_array($gu_result)["id"];
+
+				// var_dump( $columns );
+				// var_dump( $data );
+				// exit();
+				updateData($id_user, $columns, $data, "users");
+
+				$columns2 = array( "token", "pswd_changed" );
+				$data2 = array( $token, "1" );
+				updateData($id_user, $columns2, $data2, "activations");
+				header("Location: ".$up_dir."admin/");
 				break;
 
 			case "edit-account":
@@ -348,6 +409,11 @@
 
 			case "create-masload":
 				massiveLoad($_POST);
+				break;
+
+			case "update-web":
+				var_dump($_POST);
+				exit();
 				break;
 
 			case "delete":

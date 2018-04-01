@@ -5,24 +5,18 @@ ini_set("display_errors", "On");
 	include("../php/db/auth.php");
 	
 	if( authCheck() && user()["permission"]==1 && userAccess()["users"]==1 ) {
-		if( isset($_GET["id"]) ) {
-			$id = (int)$_GET["id"];
-			$table = "users";
-			if( !validateData( $id, $table ) )
-				header("Location: customers");
-			else {
-				$mysqli = conectar_db();
-				selecciona_db($mysqli);
-				$sql = "SELECT * FROM $table WHERE id=$id";
-				$result = consulta_tb($mysqli,$sql);
-			}
-		}
+		$mysqli = conectar_db();
+		selecciona_db($mysqli);
+		$sql = "SELECT * FROM web_information";
+		$result = consulta_tb($mysqli,$sql);
+		mysqli_set_charset("UTF8");
+		$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<?php
-		$title="Editar usuario";
+		$title="Editar información web";
 		$copy_year = date("Y",strtotime("today"));
 		include("structure/head.php");
 	?>
@@ -31,9 +25,9 @@ ini_set("display_errors", "On");
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<?php
-		$active_menu = "customer_mn";
-		$collapse = "customer";
-		$active_opt = "customer-view";
+		$active_menu = "manteinance_mn";
+		$collapse = "manteinance";
+		$active_opt = "manteinance-edit";
 		include("structure/navbar.php");
 	?>
 
@@ -45,27 +39,15 @@ ini_set("display_errors", "On");
 						<div class="card">
 							<div class="card-header bg-blue text-white">
 								<i class="fa fa-fw fa-pencil-square-o"></i>
-								Editando usuario
+								Editando información
 							</div>
 							<div class="card-body">
 								<form action="../php/db/requests.php" method="POST">
-									<input type="hidden" name="request" value="update-customer">
-									<input type="hidden" name="which" value="<?php echo $_GET["id"]; ?>">
+									<input type="hidden" name="request" value="update-web">
 									<?php
-										$row = mysqli_fetch_array($result);
-										$sql = null; $sql = "SELECT * FROM access WHERE id_user=".$row['id'];
-										$u_result = consulta_tb($mysqli,$sql);
-										$access_row = mysqli_fetch_array($u_result);
-
-										$sql_perm = "SELECT * FROM permissions";
-										$sql_perm_res = consulta_tb($mysqli,$sql_perm);
-										// while( $perm_row=mysqli_fetch_array($sql_perm_res) )
-										// 	var_dump($perm_row["name"]);
-										// exit();
 										$edit = true;
 									?>
-									<?php include("forms/customer-form.php") ?>
-									<button type="submit" class="btn btn-success">Actualizar</button>
+									<?php include("forms/manteinance-form.php") ?>
 								</form>
 							</div>
 						</div>

@@ -12,25 +12,25 @@
 
 	<div id="home-carousel" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner">
-	    <div class="carousel-item active" style="background-image:url('<?php echo $path.$asset."01.jpg" ?>') !important;">
+	    <div class="carousel-item active" style="background-image:url('<?php echo $path.$asset.$row["banner_home_1"] ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=1900x900.jpg" alt="Cover"> -->
 	      <div class="carousel-caption text-center">
 	      	<div class="col-md-12 mb-3">
 	      		<div class="row justify-content-center">
 	      			<div class="col-md-3">
-	      				<a id="scroll-contact" href="#" class="btn btn-yellow-light btn-block btn-noradius">CONTACTO</a>
+	      				<a id="scroll-contact" href="#" class="btn btn-yellow-light btn-block btn-noradius"><?php echo $row["banner_btn_home_text"]; ?></a>
 	      			</div>
 	      		</div>
 	      	</div>
 	      	<h1 class="text-white mb-3 mb-md-0">
-				    UNA VIDA CONFORTABLE ES UNA VIDA FELIZ
+				    <?php echo $row["banner_home_text"]; ?>
 				  </h1>
 	      </div>
 	    </div>
-	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset."02.jpg" ?>') !important;">
+	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset.$row["banner_home_2"] ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=02 1900x900.jpg" alt="Cover"> -->
 	    </div>
-	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset."03.jpg" ?>') !important;">
+	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset.$row["banner_home_3"] ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=03 1900x900.jpg" alt="Cover"> -->
 	    </div>
 	  </div>
@@ -40,45 +40,42 @@
 		<div class="container-custom">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 id="nosotros" class="mb-3 text-center"><strong>NOSOTROS</strong></h1>
-					<p class="text-justify mb-3">
-						<strong>Nuestra Misión:</strong>
-					</p>
-					<p class="text-justify mb-3">
-						Proporcionar a nuestros clientes locales y foráneos  una extensa variedad de pantuflas, con desempeño y servicio superiores al costo más competitivo para los usuarios (clientes).
-					</p>
+					<h1 id="nosotros" class="mb-3 text-center"><strong><?php echo $row["title_aboutus"]; ?></strong></h1>
+					<div class="text-justify">
+						<?php echo $row["about_us"]; ?>
+					</div>
 					
 					<div class="row justify-content-center align-items-center mb-45">
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."liverpool.png" ?>" alt="liverpool.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["brand_1"] ?>" alt="<?php echo $row["brand_1"]; ?>">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."palacio.png" ?>" alt="palacio.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["brand_2"] ?>" alt="<?php echo $row["brand_2"]; ?>">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."chedraui.png" ?>" alt="chedraui.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["brand_3"] ?>" alt="<?php echo $row["brand_3"]; ?>">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."soriana.png" ?>" alt="soriana.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["brand_4"] ?>" alt="<?php echo $row["brand_4"]; ?>">
 						</div>
 						<div class="col-md-2 mb-3 md-md-0">
-							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."sears.png" ?>" alt="sears.png">
+							<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["brand_5"] ?>" alt="<?php echo $row["brand_5"]; ?>">
 						</div>
 					</div>
 
-					<h1 id="catalogo" class="mb-3 mb-md-5 text-center"><strong>CATÁLOGO</strong></h1>
+					<h1 id="catalogo" class="mb-3 mb-md-5 text-center"><strong><?php echo $row["title_catalogue"]; ?></strong></h1>
 					<div class="row justify-content-center">
 						<div class="col-md-6 mb-3 mb-md-0">
 							<a href="<?php echo $path ?>pedidos">
-								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."catalogo_dama.png" ?>" alt="Lady">
+								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["lady_img"] ?>" alt="Lady">
 							</a>
-							<h4 class="text-center mt-3">PANTUFLAS PARA DAMA</h4>
+							<h4 class="text-center mt-3"><?php echo $row["lady_catalogue"]; ?></h4>
 						</div>
 						<div class="col-md-6 mb-3">
 							<a href="<?php echo $path ?>pedidos">
-								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."catalogo_caballero.png" ?>" alt="Gentleman">
+								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["gentleman_img"] ?>" alt="Gentleman">
 							</a>
-							<h4 class="text-center mt-3">PANTUFLAS PARA CABALLERO</h4>
+							<h4 class="text-center mt-3"><?php echo $row["gentleman_catalogue"]; ?></h4>
 						</div>
 					</div>
 				</div>

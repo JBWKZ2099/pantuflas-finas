@@ -25,6 +25,7 @@
 				session_start();
 				$_SESSION["error"]="El correo con el que intentaste registrar ya está en uso, por favor intenta con otro";
 				header( "Location: ".$validate_user[1] );
+				exit();
 			}
 		}
 		
@@ -41,7 +42,7 @@
 		$pConsulta = consulta_tb($mysqli, $Consulta);
 		session_start();
 		if (!$pConsulta) {
-			$_SESSION["error"] = "Ocurrió un error: ".mysqli_error($mysqli);
+			$_SESSION["error"] = "Ocurrió un error: ".mysqli_error($mysqli)." query='".$Consulta."'";
 		}
 		else{
 			$_SESSION["message"] = "Éxito al guardar.";
@@ -210,10 +211,10 @@
 		$sql = rtrim($sql,", ");
 		$updated_at = setTimeStamp();
 
-		if( $table!="access" )
+		if( $table!="access" && $table!="activations" )
 			$sql .= ", updated_at='$updated_at'";
 
-		if( $table!="access" )
+		if( $table!="access" && $table!="activations" )
 			$sql .= " WHERE id=$id";
 		else {
 			$sql .= " WHERE id_user=$id";
@@ -227,7 +228,7 @@
 		if( mysqli_query( $mysqli, $sql ) )
 			$_SESSION["message"] = "Los datos se actualizaron correctamente.";
 		else
-			$_SESSION["error"] = "Ocurrió un error: ".mysqli_error($mysqli);
+			$_SESSION["error"] = "Ocurrió un error: ".mysqli_error($mysqli)." query ='".$sql."'";
 	}
 
 	function setTimeStamp() {
@@ -253,5 +254,17 @@
 	      $randomString .= $characters[rand(0, $charactersLength - 1)];
 		}
     return $randomString;
+	}
+
+	function mailNotification($to,$subject,$message) {
+		$company = "Pantuflas Finas";
+		$noreply = "info@pantuflasfinas.com.mx";
+
+		$headers = "MIME-Version: 1.0"."\r\n".
+									 "Content-type: text/html; charset=utf-8"."\r\n".
+									 "From: Administrador - ".$company."<".$noreply.">\r\n".
+									 "X-Mailer: PHP/".phpversion();
+
+		$mail_usr = mail($to, $subject, $message, $headers);
 	}
 ?>

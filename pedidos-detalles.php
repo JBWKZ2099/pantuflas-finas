@@ -15,7 +15,7 @@
 
 	<div id="pedidos-carousel" class="carousel" data-ride="carousel">
 		<div class="carousel-inner">
-			<div class="carousel-item active" style="background-image: url('<?php echo $path.$asset; ?>pedidos.png')">
+			<div class="carousel-item active" style="background-image: url('<?php echo $path.$asset.$row["banner_pedidos"]; ?>')">
 				<!-- <img class="d-block w-100" src="http://placehold.it/1900x800.jpg?text=1900x800.jpg" alt="Cover"> -->
 			</div>
 		</div>

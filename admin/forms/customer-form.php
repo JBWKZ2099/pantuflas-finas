@@ -7,9 +7,12 @@
 <div class="form-group">
 	<input type="text" class="form-control" name="last_name" value="<?php echo $row["last_name"]; ?>" placeholder="Apellido Materno" required>
 </div>
+<?php $basename = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']); ?>
+<?php if( $basename!="login" ) { ?>
 <div class="form-group">
 	<input type="text" class="form-control" name="username" value="<?php echo $row["username"]; ?>" placeholder="Usuario" required>
 </div>
+<?php } ?>
 <div class="form-group">
 	<input type="email" class="form-control" name="email" value="<?php echo $row["email"]; ?>" placeholder="Correo Electrónico" required>
 </div>

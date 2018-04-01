@@ -63,3 +63,15 @@
 			});
 		};
 	</script>
+
+<?php 
+	include("php/db/conn.php");
+	$mysqli = conectar_db();
+	selecciona_db($mysqli);
+	$sql = "SELECT * FROM web_information";
+	$result = consulta_tb($mysqli,$sql);
+
+	$row = mysqli_fetch_array($result);
+
+	// var_dump( mysqli_fetch_array($result) );
+?>

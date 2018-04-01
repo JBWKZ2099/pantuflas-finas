@@ -28,6 +28,28 @@
 		}
 	}
 
+	function validateActivation($id_user) {
+		$mysqli = conectar_db();
+		selecciona_db( $mysqli );
+
+		$sql = "SELECT * FROM activations WHERE id_user = '$id_user'";
+		$result = mysqli_query( $mysqli, $sql );
+
+		$row = mysqli_fetch_array($result);
+		// echo "<script>alert( ".$row['id_user']." )</script>";
+		if( $row["token"]=="empty" )
+			return false;
+		else
+			return true;
+	}
+
+	function loginAfterReg($username) {
+		$_SESSION["auth"] = true;
+		$_SESSION["usr"] = $username;
+		$_SESSION["start"] = time();
+		$_SESSION["expire"] = $_SESSION["start"] + (60*120); /* (sec*min) = total secs */
+	}
+
 	function authCheck() {
 		if( isset($_SESSION["auth"]) ) return true;
 		else return false;
@@ -56,6 +78,7 @@
 		selecciona_db( $mysqli );
 		$sql2 = "SELECT * FROM access WHERE id_user = $id_user";
 		$res = mysqli_query( $mysqli, $sql2 );
+		
 		return mysqli_fetch_array($res, MYSQLI_ASSOC);
 	}
 

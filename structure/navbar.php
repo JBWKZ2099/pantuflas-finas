@@ -3,17 +3,17 @@
 	
 	if( $active!="pedidos" ) {
 		$items = json_decode(json_encode(array(
-			array("active" => "none", "link" => "#", "word" => "NOSOTROS", "data_target" => "#nosotros"),
-			array("active" => "none", "link" => "#", "word" => "CATÁLOGO", "data_target" => "#catalogo"),
-			array("active" => "pedidos", "link" => "pedidos", "word" => "PEDIDOS", "data_target" => "no-parallax"),
-			array("active" => "none", "link" => "#", "word" => "CONTACTO", "data_target" => "#contacto"),
+			array("active" => "none", "link" => "#", "word" => $row["navbar_title_1"], "data_target" => "#nosotros"),
+			array("active" => "none", "link" => "#", "word" => $row["navbar_title_2"], "data_target" => "#catalogo"),
+			array("active" => "pedidos", "link" => "pedidos", "word" => $row["navbar_title_3"], "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "#", "word" => $row["navbar_title_4"], "data_target" => "#contacto"),
 		)), FALSE);
 	} else {
 		$items = json_decode(json_encode(array(
-			array("active" => "none", "link" => "index#nosotros", "word" => "NOSOTROS", "data_target" => "no-parallax"),
-			array("active" => "none", "link" => "index#catalogo", "word" => "CATÁLOGO", "data_target" => "no-parallax"),
-			array("active" => "pedidos", "link" => "pedidos", "word" => "PEDIDOS", "data_target" => "no-parallax"),
-			array("active" => "none", "link" => "index#contacto", "word" => "CONTACTO", "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "index#nosotros", "word" => $row["navbar_title_1"], "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "index#catalogo", "word" => $row["navbar_title_2"], "data_target" => "no-parallax"),
+			array("active" => "pedidos", "link" => "pedidos", "word" => $row["navbar_title_3"], "data_target" => "no-parallax"),
+			array("active" => "none", "link" => "index#contacto", "word" => $row["navbar_title_4"], "data_target" => "no-parallax"),
 		)), FALSE);
 	}
 ?>

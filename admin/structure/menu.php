@@ -87,8 +87,8 @@
   </li>
   <?php } ?>
   <?php if( userAccess()["my_account"]==1 /*&& user()["permission"]!=1*/ ) { ?>
-  <li class="nav-item <?php if( $active_menu=="manteinance_mn" ) echo "active"; ?>" data-toggle="tooltip" data-placement="right" title="Solicitud">
-    <a class="nav-link nav-link-collapse <?php if( $active_menu=="manteinance_mn" ) echo ""; else echo "collapsed"; ?>" data-toggle="collapse" href="#myaccountCollapse" data-parent="#exampleAccordion">
+  <li class="nav-item <?php if( $active_menu=="myaccount_mn" ) echo "active"; ?>" data-toggle="tooltip" data-placement="right" title="Solicitud">
+    <a class="nav-link nav-link-collapse <?php if( $active_menu=="myaccount_mn" ) echo ""; else echo "collapsed"; ?>" data-toggle="collapse" href="#myaccountCollapse" data-parent="#exampleAccordion">
       <i class="fa fa-fw fa-user"></i>
       <span class="nav-link-text">
         Mi Cuenta</span>
