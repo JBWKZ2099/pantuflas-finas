@@ -42,7 +42,11 @@ ini_set("display_errors", "On");
 								Editando información
 							</div>
 							<div class="card-body">
-								<form action="../php/db/requests.php" method="POST">
+								<?php
+									include("../alerts/errors.php");
+									include("../alerts/success.php");
+								?>
+								<form action="../php/db/requests.php" method="POST" enctype="multipart/form-data">
 									<input type="hidden" name="request" value="update-web">
 									<?php
 										$edit = true;
@@ -64,6 +68,77 @@ ini_set("display_errors", "On");
 		<i class="fa fa-angle-up"></i>
 	</a>
 	<?php include("widgets/modal.php") ?>
+
+
+	<script defer="defer">
+		$(document).ready(function() {
+	  	$("#next-btn").click(function(e){
+	  		var current = $("[data-current]").attr("data-current");
+	  		current = parseInt(current);
+				var which = $("[data-order='"+(current+1)+"']").attr("href");
+
+				$(".tab-pane.fade").removeClass("show").removeClass("active");
+				$(".nav-link").removeClass("active");
+				$(".nav-link[href='"+which+"']").addClass("active");
+				$(which).addClass("show").addClass("active");
+	  		$("[data-order='"+(current+1)+"']").trigger("click");
+	  		$("#myTab").attr("data-current",(current+1));
+
+	  		if( $("[data-current]").attr("data-current")=="7" ) {
+	  			$(this).addClass("d-none");
+	  			$("#submit").removeClass("d-none");
+	  		}
+	  	});
+
+	  	$("#prev-btn").click(function(e){
+	  		var current = $("[data-current]").attr("data-current");
+	  		current = parseInt(current);
+	  		if( current>1 ) {
+	  			console.log("clicked");
+					var which = $("[data-order='"+(current-1)+"']").attr("href");
+
+					$(".tab-pane.fade").removeClass("show").removeClass("active");
+					$(".nav-link").removeClass("active");
+					$(".nav-link[href='"+which+"']").addClass("active");
+					$(which).addClass("show").addClass("active");
+		  		$("[data-order='"+(current-1)+"']").trigger("click");
+		  		$("#myTab").attr("data-current",(current-1));
+
+		  		if( $("[data-current]").attr("data-current")=="6" ) {
+		  			$("#next-btn").removeClass("d-none");
+		  			$("#submit").addClass("d-none");
+		  		}
+		  	}
+	  	});
+
+	  	$(".nav-link").click(function(e){
+	  		var which = parseInt( $(this).attr("data-order") );
+	  		$("[data-current]").attr("data-current",which)
+	  		if( which<7 && which>0 ) {
+	  			$("#submit").addClass("d-none");
+		  		$("#next-btn").removeClass("d-none");
+	  		}
+	  		if( which==7 ) {
+	  			$("#submit").removeClass("d-none");
+		  		$("#next-btn").addClass("d-none");
+	  		}
+	  	});
+
+			editor("ta1");
+			editor("ta2");
+			editor("ta3");
+
+			function editor(id) {
+				CodeMirror.fromTextArea(document.getElementById(id), {
+					lineNumbers: true,
+					tabSize: 2,
+					htmMode: true,
+					autofocus: true,
+					mode: "text/html"
+				});
+			}
+		});
+	</script>
 </body>
 </html>
 <?php

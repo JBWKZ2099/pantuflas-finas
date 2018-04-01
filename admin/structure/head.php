@@ -40,6 +40,7 @@
 <!-- Custom styles for this template-->
 <link href="assets/css/sb-admin.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
+<link href="https://codemirror.net/lib/codemirror.css" rel="stylesheet">
 <link href="assets/css/codemirror.css" rel="stylesheet">
 
 <script src="https://use.fontawesome.com/5b97f125c2.js"></script>
@@ -53,6 +54,7 @@
 <!-- Custom scripts for all pages-->
 <script src="assets/js/sb-admin.min.js"></script>
 <script src="assets/js/codemirror.js"></script>
+<script src="http://codemirror.net/mode/xml/xml.js"></script>
 <!-- Custom scripts for this page-->
 <!-- <script src="assets/js/sb-admin-datatables.min.js"></script> -->
 <script src="assets/js/script.js"></script>

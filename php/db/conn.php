@@ -221,7 +221,7 @@
 			// var_dump($sql);
 			// exit();
 		}
-		// var_dump($sql);
+		// echo "query: ".htmlentities($sql);
 		// exit();
 		
 		session_start();

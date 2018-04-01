@@ -4,7 +4,7 @@
 	<?php
 		$view_name="Inicio";
 		include("structure/head.php");
-		$asset = "assets/img/home/"; // Path where are storaged media files (img, video, etc)
+		$asset = "uploads/"; // Path where are storaged media files (img, video, etc)
 	?>
 </head>
 <body>

@@ -412,8 +412,143 @@
 				break;
 
 			case "update-web":
-				var_dump($_POST);
-				exit();
+				$columns = array();
+				$data = array();
+
+				$columns[] = "title_aboutus";
+				$columns[] = "about_us";
+				if( isset($_FILES["brands_1"]["name"]) && !empty($_FILES["brands_1"]["name"]) )
+					$columns[] = "brand_1";
+				if( isset($_FILES["brands_2"]["name"]) && !empty($_FILES["brands_2"]["name"]) )
+					$columns[] = "brand_2";
+				if( isset($_FILES["brands_3"]["name"]) && !empty($_FILES["brands_3"]["name"]) )
+					$columns[] = "brand_3";
+				if( isset($_FILES["brands_4"]["name"]) && !empty($_FILES["brands_4"]["name"]) )
+					$columns[] = "brand_4";
+				if( isset($_FILES["brands_5"]["name"]) && !empty($_FILES["brands_5"]["name"]) )
+					$columns[] = "brand_5";
+
+				$columns[] = "title_catalogue";
+				$columns[] = "gentleman_catalogue";
+				$columns[] = "lady_catalogue";
+
+				if( isset($_FILES["gentleman_img"]["name"]) && !empty($_FILES["gentleman_img"]["name"]) )
+					$columns[] = "gentleman_img";
+				if( isset($_FILES["lady_img"]["name"]) && !empty($_FILES["lady_img"]["name"]) )
+					$columns[] = "lady_img";
+
+				$columns[] = "navbar_title_1";
+				$columns[] = "navbar_title_2";
+				$columns[] = "navbar_title_3";
+				$columns[] = "navbar_title_4";
+				$columns[] = "footer_content";
+				$columns[] = "facebook_link";
+				$columns[] = "instagram_link";
+				$columns[] = "pedidos_title";
+				$i=1;
+				foreach( $_POST["banners_home"] as $b_home ) {
+					if( isset($b_home) && !empty($b_home) ) {
+						$columns[] = "banner_home_".$i;
+					}
+					$i++;
+				}
+				$columns[] = "banner_home_text";
+				$columns[] = "banner_btn_home_text";
+				if( isset($_POST["banner_pedidos"]) && !empty($_POST["banner_pedidos"]) ) {
+					$columns[] = "banner_pedidos";
+				}
+
+				$data[] = $_POST["title-aboutus"];
+				$data[] = $_POST["about-us"];
+				$upload_path = "../../uploads/";
+				if( isset($_FILES["brands_1"]["name"]) && !empty($_FILES["brands_1"]["name"]) ) {
+					$brands_1_name = date("Y-m-d_His")."_".$_FILES["brands_1"]["name"];
+					$data[] = $brands_1_name;
+					$dir_subida = $upload_path.$brands_1_name;
+					move_uploaded_file($_FILES["brands_1"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["brands_2"]["name"]) && !empty($_FILES["brands_2"]["name"]) ) {
+					$brands_2_name = date("Y-m-d_His")."_".$_FILES["brands_2"]["name"];
+					$data[] = $brands_2_name;
+					$dir_subida = $upload_path.$brands_2_name;
+					move_uploaded_file($_FILES["brands_2"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["brands_3"]["name"]) && !empty($_FILES["brands_3"]["name"]) ) {
+					$brands_3_name = date("Y-m-d_His")."_".$_FILES["brands_3"]["name"];
+					$data[] = $brands_3_name;
+					$dir_subida = $upload_path.$brands_3_name;
+					move_uploaded_file($_FILES["brands_3"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["brands_4"]["name"]) && !empty($_FILES["brands_4"]["name"]) ) {
+					$brands_4_name = date("Y-m-d_His")."_".$_FILES["brands_4"]["name"];
+					$data[] = $brands_4_name;
+					$dir_subida = $upload_path.$brands_4_name;
+					move_uploaded_file($_FILES["brands_4"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["brands_5"]["name"]) && !empty($_FILES["brands_5"]["name"]) ) {
+					$brands_5_name = date("Y-m-d_His")."_".$_FILES["brands_5"]["name"];
+					$data[] = $brands_5_name;
+					$dir_subida = $upload_path.$brands_5_name;
+					move_uploaded_file($_FILES["brands_5"]["tmp_name"], $dir_subida);
+				}
+				$data[] = $_POST["title-catalogue"];
+				$data[] = $_POST["gentleman-catalogue"];
+				$data[] = $_POST["lady-catalogue"];
+				if( isset($_FILES["gentleman_img"]["name"]) && !empty($_FILES["gentleman_img"]["name"]) ) {
+					$gentleman_name = date("Y-m-d_His")."_".$_FILES["gentleman_img"]["name"];
+					$data[] = $gentleman_name;
+					$dir_subida = $upload_path.$gentleman_name;
+					move_uploaded_file($_FILES["gentleman_img"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["lady_img"]["name"]) && !empty($_FILES["lady_img"]["name"]) ) {
+					$lady_name = date("Y-m-d_His")."_".$_FILES["lady_img"]["name"];
+					$data[] = $lady_name;
+					$dir_subida = $upload_path.$lady_name;
+					move_uploaded_file($_FILES["lady_img"]["tmp_name"], $dir_subida);
+				}
+				foreach( $_POST["navbar-titles"] as $nb_title ) {
+					if( isset($nb_title) && !empty($nb_title) )
+						$data[] = $nb_title;
+				}
+				$data[] = $_POST["footer-content"];
+				foreach( $_POST["footer-links"] as $f_links ) {
+					if( isset($f_links) && !empty($f_links) )
+						$data[] = $f_links;
+				}
+				$data[] = $_POST["pedidos-title"];
+				if( isset($_FILES["banners_home_1"]["name"]) && !empty($_FILES["banners_home_1"]["name"]) ) {
+					$banner_home_1_img = date("Y-m-d_His")."_".$_FILES["banners_home_1"]["name"];
+					$data[] = $banner_home_1_img;
+					$dir_subida = $upload_path.$banner_home_1_img;
+					move_uploaded_file($_FILES["banners_home_1"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["banners_home_2"]["name"]) && !empty($_FILES["banners_home_2"]["name"]) ) {
+					$banner_home_2_img = date("Y-m-d_His")."_".$_FILES["banners_home_2"]["name"];
+					$data[] = $banner_home_2_img;
+					$dir_subida = $upload_path.$banner_home_2_img;
+					move_uploaded_file($_FILES["banners_home_2"]["tmp_name"], $dir_subida);
+				}
+				if( isset($_FILES["banners_home_3"]["name"]) && !empty($_FILES["banners_home_3"]["name"]) ) {
+					$banner_home_3_img = date("Y-m-d_His")."_".$_FILES["banners_home_3"]["name"];
+					$data[] = $banner_home_3_img;
+					$dir_subida = $upload_path.$banner_home_3_img;
+					move_uploaded_file($_FILES["banners_home_3"]["tmp_name"], $dir_subida);
+				}
+				$data[] = $_POST["banner-home-text"];
+				$data[] = $_POST["banner-btn-home-text"];
+				if( isset($_FILES["banner_pedidos"]["name"]) && !empty($_FILES["banner_pedidos"]["name"]) ) {
+					$banner_pedidos_img = date("Y-m-d_His")."_".$_FILES["banner_pedidos"]["name"];
+					$data[] = date("Y-m-d_His")."_".$_FILES["banner_pedidos"]["name"];
+					$dir_subida = $upload_path.$banner_pedidos_img;
+					move_uploaded_file($_FILES["banner_pedidos"]["tmp_name"], $dir_subida);
+				}
+
+				// var_dump($columns);
+				// echo "<br><br><br>";
+				// var_dump($data);
+				// exit();
+				updateData("1", $columns, $data, "web_information");
+				header("Location: ".$up_dir."admin/manteinance-edit");
 				break;
 
 			case "delete":

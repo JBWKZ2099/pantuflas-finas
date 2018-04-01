@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs mb-3" id="myTab" role="tablist" data-current="1">
+<ul class="nav nav-tabs mb-3" id="myTab" role="tablist" data-current="1" data-last="7">
   <li class="nav-item">
     <a data-order="1" class="nav-link active" id="aboutus-tab" data-toggle="tab" href="#aboutus" role="tab" aria-controls="aboutus" aria-selected="true">Nosotros</a>
   </li>
@@ -30,14 +30,14 @@
 		</div>
 		<div class="form-group">
   		<label>Contenido Sección</label>
-			<textarea class="form-control" name="about-us" rows="5" placeholder="Nosotros..."><?php echo htmlentities($row["about_us"]) ?></textarea>
+			<textarea id="ta1" class="form-control" name="about-us" rows="5" placeholder="Nosotros..."><?php echo htmlentities($row["about_us"]) ?></textarea>
 		</div>
   </div>
 
   <div class="tab-pane fade" id="brands" role="tabpanel" aria-labelledby="brands-tab">
 		<div class="form-group">
 			<label>Imágen 1</label>
-			<input type="file" class="form-control-file" name="brands[]">
+			<input type="file" class="form-control-file" name="brands_1">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -51,7 +51,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen 2</label>
-			<input type="file" class="form-control-file" name="brands[]">
+			<input type="file" class="form-control-file" name="brands_2">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen 3</label>
-			<input type="file" class="form-control-file" name="brands[]">
+			<input type="file" class="form-control-file" name="brands_3">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -79,7 +79,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen 4</label>
-			<input type="file" class="form-control-file" name="brands[]">
+			<input type="file" class="form-control-file" name="brands_4">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -93,7 +93,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen 5</label>
-			<input type="file" class="form-control-file" name="brands[]">
+			<input type="file" class="form-control-file" name="brands_5">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -118,7 +118,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen Caballero:</label>
-			<input type="file" class="form-control-file" name="catalogue_img[]">
+			<input type="file" class="form-control-file" name="gentleman_img">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -136,7 +136,7 @@
 		</div>
 		<div class="form-group">
 			<label>Imágen Dama:</label>
-			<input type="file" class="form-control-file" name="catalogue_img[]">
+			<input type="file" class="form-control-file" name="lady_img">
 			<small>La imágen debe ser en formato jpg, png o svg y la resolución deberá ser 300 x 140 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -172,7 +172,7 @@
   <div class="tab-pane fade" id="footer" role="tabpanel" aria-labelledby="footer-tab">
   	<div class="form-group">
   		<label>Contenido:</label>
-			<textarea rows="5" class="form-control" name="footer-content" placeholder="Contenido footer" required><?php echo $row["footer_content"]; ?></textarea>
+			<textarea id="ta2" rows="5" class="form-control" name="footer-content" placeholder="Contenido footer" required><?php echo $row["footer_content"]; ?></textarea>
 			<small>Tenga cuidado al modificar la información de esta sección, ya que tiene estilos de Bootstrap 4 y si por algún motivo los elementos no tienen las clases adecuadas, los elementos podrían no mostrarse correctamente.</small>
 		</div>
   	<div class="form-group">
@@ -188,14 +188,14 @@
   <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="pedidos-tab">
   	<div class="form-group">
   		<label>Título:</label>
-			<textarea type="text" class="form-control" name="pedidos-title" placeholder="Catálogo de productos" required><?php echo $row["pedidos_title"]; ?></textarea>
+			<textarea id="ta3" type="text" class="form-control" name="pedidos-title" placeholder="Catálogo de productos" required><?php echo $row["pedidos_title"]; ?></textarea>
 		</div>
   </div>
   
   <div class="tab-pane fade" id="banners" role="tabpanel" aria-labelledby="banners-tab">
   	<div class="form-group">
 			<label>Banner 1 Home:</label>
-			<input type="file" class="form-control-file" name="banners_home[]">
+			<input type="file" class="form-control-file" name="banners_home_1">
 			<small>La imágen debe ser en formato jpg y la resolución deberá ser 1500 x 400 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -209,7 +209,7 @@
 		</div>
   	<div class="form-group">
 			<label>Banner 2 Home:</label>
-			<input type="file" class="form-control-file" name="banners_home[]">
+			<input type="file" class="form-control-file" name="banners_home_2">
 			<small>La imágen debe ser en formato jpg y la resolución deberá ser 1500 x 400 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -222,8 +222,8 @@
 			</div>
 		</div>
   	<div class="form-group">
-			<label>Banner 2 Home:</label>
-			<input type="file" class="form-control-file" name="banners_home[]">
+			<label>Banner 3 Home:</label>
+			<input type="file" class="form-control-file" name="banners_home_3">
 			<small>La imágen debe ser en formato jpg y la resolución deberá ser 1500 x 400 para su mejor funcionamiento. </small>
 			<br>
 		</div>
@@ -259,12 +259,7 @@
 		</div>
   </div>
 
-  <button id="next-btn" type="button" class="btn btn-secondary">Siguiente</button>
-  <button type="submit" class="btn btn-success">Actualizar</button>
-  <script>
-  	$("#next-btn").click(function(e){
-  		var current = $("[data-current]").attr("data-current");
-
-  	});
-  </script>
+  <button id="prev-btn" type="button" class="btn btn-secondary float-left">Anterior</button>
+  <button id="next-btn" type="button" class="btn btn-secondary float-right">Siguiente</button>
+  <button id="submit" type="submit" class="btn btn-success float-right d-none">Actualizar</button>
 </div>
