@@ -1,7 +1,7 @@
 <?php
 	function act($item, $active) { echo $item == $active ? " active" : ""; }
 	
-	if( $active!="pedidos" ) {
+	if( $active!="pedidos" && $active!="privacy" ) {
 		$items = json_decode(json_encode(array(
 			array("active" => "none", "link" => "#", "word" => $row["navbar_title_1"], "data_target" => "#nosotros"),
 			array("active" => "none", "link" => "#", "word" => $row["navbar_title_2"], "data_target" => "#catalogo"),

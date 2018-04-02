@@ -8,7 +8,7 @@
 	?>
 </head>
 <body>
-	<?php $active="index"; include("structure/navbar.php") ?>
+	<?php $active="privacy"; include("structure/navbar.php") ?>
 
 	<section class="pt-60 pb-60 container-custom">
 		<div class="row pt-60">

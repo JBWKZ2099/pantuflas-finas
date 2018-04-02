@@ -8,7 +8,7 @@
 	} else {
 		define('SERVER','localhost');
 		define('USER', 'root');
-		define('PASSWORD', '');
+		define('PASSWORD', 'root');
 		define('DATABASE', 'pantuflas');
 	}
 ?>
