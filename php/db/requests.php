@@ -1,5 +1,5 @@
 <?php
-	ini_set("display_errors", "On");
+	ini_set("display_errors", "Off");
 	include("data.php");
 	include("conn.php");
 	include("auth.php");
@@ -409,6 +409,7 @@
 
 			case "create-masload":
 				massiveLoad($_POST);
+				header("Location: ".$up_dir."admin/massive-load-create");
 				break;
 
 			case "update-web":

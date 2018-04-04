@@ -119,29 +119,53 @@
 
 	function massiveLoad( $post ) {
 		// header('Content-Type: application/json');
-		ini_set("display_errors","On");
 		$json_clean = str_replace(" ", "", preg_replace("[\n|\r|\n\r]", "", $_POST["json-load"]));
 		$json_clean = json_decode( $json_clean );
 		
 		$mysqli = conectar_db();
 		selecciona_db($mysqli);
 
-		$data = array();
+		$columns = array(
+			"id",
+			"id_item",
+			"name",
+			"price",
+			"line",
+			"line_l",
+			"origin",
+			"sizes",
+			"d3_c4",
+			"colors",
+			"images",
+			"created_at",
+			"updated_at",
+		);
 		for( $i=0; $i<count($json_clean); $i++ ) {
-			$data[$i] = array(
-				"style" => $json_clean[$i]->style,
-				"name" => $json_clean[$i]->name,
-				"season" => $json_clean[$i]->season,
-				"sex" => $json_clean[$i]->sex,
-				"color" => $json_clean[$i]->color,
-				"num" => $json_clean[$i]->num,
-				"inf_price" => $json_clean[$i]->inf_price,
-				"img_name" => $json_clean[$i]->img_name,
+			$data = array(
+				0 => "NULL",
+				1 => "'".$json_clean[$i]->id_item."'",
+				2 => "'".$json_clean[$i]->name."'",
+				3 => "'".$json_clean[$i]->price."'",
+				4 => "'".$json_clean[$i]->line."'",
+				5 => "'".$json_clean[$i]->line_l."'",
+				6 => "'".$json_clean[$i]->origin."'",
+				7 => "'".$json_clean[$i]->sizes."'",
+				8 => "'".$json_clean[$i]->d3_c4."'",
+				9 => "'".$json_clean[$i]->colors."'",
+				10 => "'".$json_clean[$i]->images."'",
+				11 => "'".date("Y-m-d H:i:s")."'",
+				12 => "NULL"
 			);
+
+			registro_nuevo("assortment", $data, $columns, null);
+			// var_dump($data);
+			// exit();
 		}
-		var_dump($data);
+		// var_dump($data);
 		// var_dump( $json_clean );
-		exit();
+		// exit();
+
+		return true;
 	}
 
 	function dataTable($post, $columns, $col_clean, $sql_data) {
@@ -235,6 +259,73 @@
 		date_default_timezone_set("UTC");
 		date_default_timezone_set("America/Mexico_City");
 		return date("Y-m-d H:i:s");
+	}
+
+	function getProducts($mysqli,$page) {
+		// '$page' es la página actual ($_GET["page"])
+    // '$total' es el total de registros y se ocupa para poder calcular el número de resultados por página
+    // '$total_pages' guarda la cantidad total de páginas
+    // '$limit_1' es la cantidad de resultados, utilizada como tipo variable global tanto para la consulta como para el parámetro '$limit_0'
+    // '$limit_0' es la primer "página" de los resultados de la consulta sql
+    $query = "SELECT COUNT(*) as num_rows FROM assortment";
+    $res = mysqli_query($mysqli, $query);
+    $total = mysqli_fetch_array($res)["num_rows"];
+    $limit_1 = 9;
+    mysqli_free_result($res);
+
+    $total_pages = $total / $limit_1;
+    $total_pages = ceil($total_pages);
+
+    $limit_0 = ($page*$limit_1)-$limit_1;
+
+    $sql = "SELECT * FROM assortment LIMIT $limit_0,$limit_1";
+    $query = mysqli_query($mysqli,$sql);
+    $datos = array();
+    // $counter = 0;
+
+    while( $row=mysqli_fetch_array($query) ) {
+    	$datos[] = array(
+    		"id" => $row["id"],
+				"id_item" => $row["id_item"],
+				"name" => $row["name"],
+				"price" => $row["price"],
+				"line" => $row["line"],
+				"line_l" => $row["line_l"],
+				"origin" => $row["origin"],
+				"sizes" => $row["sizes"],
+				"d3_c4" => $row["d3_c4"],
+				"colors" => $row["colors"],
+				"images" => $row["images"],
+				"pages" => $total_pages,
+    	);
+    }
+
+		return $datos;
+		mysqli_close($mysqli);
+	}
+
+	function getProduct($mysqli,$id) {
+		$sql = "SELECT * FROM assortment WHERE id_item=".$id;
+		$res = mysqli_query($mysqli,$sql);
+
+    while( $row=mysqli_fetch_array($res) ) {
+    	$datos[] = array(
+    		"id" => $row["id"],
+				"id_item" => $row["id_item"],
+				"name" => $row["name"],
+				"price" => $row["price"],
+				"line" => $row["line"],
+				"line_l" => $row["line_l"],
+				"origin" => $row["origin"],
+				"sizes" => $row["sizes"],
+				"d3_c4" => $row["d3_c4"],
+				"colors" => $row["colors"],
+				"images" => $row["images"],
+    	);
+    }
+
+		return $datos;
+		mysqli_close($mysqli);
 	}
 
 	function activationCode($type) {

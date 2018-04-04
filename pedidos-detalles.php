@@ -8,6 +8,9 @@
 		$view_name="Pedidos";
 		include("structure/head.php");
 		$asset = "uploads/"; // Path where are storaged media files (img, video, etc)
+
+		$details = getProduct($mysqli,$_GET["id"]);
+		// var_dump($details);
 	?>
 </head>
 <body>
@@ -32,19 +35,33 @@
 
 			<div class="row pt-30 align-items-center products-container">
 				<div class="col-md-6 mb-3 mb-md-0 main-image-container">
-					<img id="zoom-image" class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=01 600x360.jpg"  data-zoom-image="http://placehold.it/600x360.jpg?text=01 600x360.jpg" alt="">
+					<?php
+						$img_0 = explode(",", $details[0]["images"])[0];
+						$img_1 = explode(",", $details[0]["images"])[1];
+						$img_2 = explode(",", $details[0]["images"])[2];
+						$img_3 = explode(",", $details[0]["images"])[3];
+						$folder_name = explode("_",$img_1)[0]."/";
+					?>
+					<img id="zoom-image" class="img-fluid d-block m-auto" src="<?php echo $path.$asset."assortment/".$folder_name.$img_0 ?>"  data-zoom-image="<?php echo $path.$asset."assortment/".$folder_name.$img_0 ?>" alt="<?php echo $path.$asset."assortment/".$folder_name.$img_0 ?>">
 				</div>
 				<div class="col-md-6">
 					<p><strong>DESCRIPCIÓN</strong></p>
 					<p>
-						<strong>PANTUFLA CON TALÓN 2</strong>
+						<strong><?php echo $details[0]["name"] ?></strong>
 					</p>
 					<p>
-						<strong>ESTILO:</strong> 4517
+						<strong>ESTILO:</strong> <?php echo $details[0]["id_item"] ?>
 					</p>
 					<p>
 						<strong>TALLAS:</strong> 26 al 30
 					</p>
+					<p>
+						<strong>Precio:</strong> $ <?php echo $details[0]["price"]; ?>
+					</p>
+					<p>
+						<strong>Origen:</strong> <?php echo $details[0]["origin"]; ?>
+					</p>
+					<?php /*
 					<p>
 						<strong>Descripción:</strong> Pantuflas con talón 2
 					</p>
@@ -57,6 +74,7 @@
 					<p>
 						<strong>Categoría:</strong> Confort Caballero
 					</p>
+					*/ ?>
 
 					<div class="row mt-3 colors-container">
 						<div class="col-md-12 mb-3">
@@ -71,27 +89,36 @@
 
 						<div class="col-md-12">
 							<?php
-								$colors = array(
+								/*$colors = array(
 									0 => "red",
 									1 => "blue",
 									2 => "green",
 									3 => "yellow",
 								);
+								for( $i=1; $i<=3; $i++ ) {
+								echo '<div class="available-color mb-3 mb-md-0" style="background-color: <?php echo $colors[$i]; ?>"></div>';
+							}*/
 							?>
-							<?php for( $i=1; $i<=3; $i++ ) { ?>
-								<div class="available-color mb-3 mb-md-0" style="background-color: <?php echo $colors[$i]; ?>"></div>
-							<?php } ?>
+							<?php echo $details[0]["colors"]; ?>
 						</div>
 					</div>
 
 					<div class="row mt-3" id="gallery_01">
-						<?php for( $i=1; $i<=3; $i++ ) { ?>
-							<div class="col-md-4 mb-3 mb-md-0">
-								<a href="#" data-img="<?php echo $i; ?>" data-zoom-image="http://placehold.it/600x360.jpg?text=0<?php echo $i; ?> 600x360.jpg" data-image="http://placehold.it/600x360.jpg?text=0<?php echo $i; ?> 600x360.jpg">
-									<img class="img-fluid d-block m-auto" src="http://placehold.it/600x360.jpg?text=0<?php echo $i; ?> 600x360.jpg" alt="">
-								</a>
-							</div>
-						<?php } ?>
+						<div class="col-md-4 mb-3 mb-md-0">
+							<a href="#" data-img="1" data-zoom-image="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>" data-image="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>">
+								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>" alt="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>">
+							</a>
+						</div>
+						<div class="col-md-4 mb-3 mb-md-0">
+							<a href="#" data-img="1" data-zoom-image="<?php echo $path.$asset."assortment/".$folder_name.$img_2 ?>" data-image="<?php echo $path.$asset."assortment/".$folder_name.$img_2 ?>">
+								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."assortment/".$folder_name.$img_2 ?>" alt="<?php echo $path.$asset."assortment/".$folder_name.$img_2 ?>">
+							</a>
+						</div>
+						<div class="col-md-4 mb-3 mb-md-0">
+							<a href="#" data-img="1" data-zoom-image="<?php echo $path.$asset."assortment/".$folder_name.$img_3 ?>" data-image="<?php echo $path.$asset."assortment/".$folder_name.$img_3 ?>">
+								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset."assortment/".$folder_name.$img_3 ?>" alt="<?php echo $path.$asset."assortment/".$folder_name.$img_3 ?>">
+							</a>
+						</div>
 
 						<script>
 							//initiate the plugin and pass the id of the div containing gallery images
@@ -129,24 +156,6 @@
 							});*/
 						</script>
 					</div>
-				</div>
-			</div>
-
-			<div class="row pt-3">
-				<div class="col-md-12">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination pagination-lg pagination-custom">
-							<li class="page-item"><a class="page-link" href="#">
-								<i class="fas fa-caret-left"></i>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">
-								<i class="fas fa-caret-right"></i>
-							</a></li>
-						</ul>
-					</nav>
 				</div>
 			</div>
 		</div>
