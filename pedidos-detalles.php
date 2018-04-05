@@ -115,6 +115,39 @@
 							</div>
 						</div>
 
+						<div class="col-md-12 mb-3">
+							<p><strong>Telas:</strong></p>
+						</div>
+
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_01" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/cafe_mediano.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/cafe_mediano.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_02" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/cafe.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/cafe.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_03" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/marino.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/marino.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_04" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/negro.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/negro.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_05" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/rosa.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/rosa.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_06" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/turquesa.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/turquesa.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_07" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Microterry/beige.jpg" data-zoom-image="<?php echo $path ?>assets/img/Microterry/beige.jpg">
+								</div>
+								<div class="col-md-3 mb-3 mb-md-3">
+									<img id="zoom_telas_08" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Microterry/blanco.jpg" data-zoom-image="<?php echo $path ?>assets/img/Microterry/blanco.jpg">
+								</div>
+							</div>
+						</div>
+
 						<div class="row mt-3" id="gallery_01">
 							<div class="col-md-4 mb-3 mb-md-0">
 								<a href="#" data-img="1" data-zoom-image="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>" data-image="<?php echo $path.$asset."assortment/".$folder_name.$img_1 ?>">
@@ -141,6 +174,7 @@
 									imageCrossfade: true,
 									loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
 									zoomType: "inner",
+									lensSize: 100,
 									scrollZoom: true
 								}); 
 
@@ -150,6 +184,15 @@
 									$.fancybox(ez.getGalleryList());
 								  return false;
 								});
+
+								$("#zoom_telas_01").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_02").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_03").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_04").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_05").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_06").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_07").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								$("#zoom_telas_08").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
 								/*$("[data-img]").click(function(e){
 									e.preventDefault();
 									var which = $(this).attr("data-img");

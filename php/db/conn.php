@@ -267,7 +267,7 @@
     // '$total_pages' guarda la cantidad total de páginas
     // '$limit_1' es la cantidad de resultados, utilizada como tipo variable global tanto para la consulta como para el parámetro '$limit_0'
     // '$limit_0' es la primer "página" de los resultados de la consulta sql
-    $query = "SELECT COUNT(*) as num_rows FROM assortment WHERE category='$category'";
+    $query = "SELECT COUNT(*) as num_rows FROM assortment WHERE category='$category' AND origin='NACIONAL'";
     $res = mysqli_query($mysqli, $query);
     $total = mysqli_fetch_array($res)["num_rows"];
     $limit_1 = 9;
@@ -278,7 +278,7 @@
 
     $limit_0 = ($page*$limit_1)-$limit_1;
 
-    $sql = "SELECT * FROM assortment WHERE category='$category' LIMIT $limit_0,$limit_1";
+    $sql = "SELECT * FROM assortment WHERE category='$category' AND origin='NACIONAL' LIMIT $limit_0,$limit_1";
     $query = mysqli_query($mysqli,$sql);
     $datos = array();
     // $counter = 0;
