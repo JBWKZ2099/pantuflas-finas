@@ -56,16 +56,19 @@
 							<strong>ESTILO:</strong> <?php echo $details[0]["id_item"] ?>
 						</p>
 						<p>
-							<strong>TALLAS:</strong>
+							<strong>TALLA:</strong>
+							<select name="sizes">
 							<?php
 								$sizes = explode(",", $details[0]["sizes"]);
 								foreach( $sizes as $size ) {
-									if( $size!="0" )
-										$sizes_str .= $size.", ";
+									if( $size!="0" ) { ?>
+									<option value="<?php echo $size ?>"><?php echo $size ?></option>
+							<?php
+										$size;
+									}
 								}
-								$sizes_str = substr($sizes_str, 0, -2).".";
-								echo str_lreplace(", "," y ",$sizes_str);
 							?>
+							</select>
 						</p>
 						<p>
 							<strong>Precio:</strong> $ <?php echo $details[0]["price"]; ?>
