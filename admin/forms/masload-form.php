@@ -8,22 +8,21 @@
 <div class="form-group">
 	<p>Ejemplo de como armar el campo para la carga masiva:</p>
 	<small><samp>
-		[{ <br>
-			&nbsp;&nbsp;"id_item": "3804", <br>
-			&nbsp;&nbsp;"name": "PANTUFLA PMTE.TEXTIL", <br>
-			&nbsp;&nbsp;"price": "999.00", <br>
-			&nbsp;&nbsp;"line": "CO", <br>
-			&nbsp;&nbsp;"line_l": "CONFORT", <br>
-			&nbsp;&nbsp;"origin": "NACIONAL", <br>
-			&nbsp;&nbsp;"sizes": "0,0,0,0,1,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0", <br>
-			&nbsp;&nbsp;"d3_c4": "3", <br>
-			&nbsp;&nbsp;"colors": "LILA", <br>
-			&nbsp;&nbsp;"images": "nombre_1.JPG,nombre_2.JPG,nombre_3.JPG,nombre_4.JPG" <br>
-		}, <br>
-		{ <br>
-			&nbsp;&nbsp;"id_item": "3804", <br>
-			&nbsp;&nbsp;... <br>
-		}]
+		[{<br>
+		&nbsp;&nbsp;"id_item": "1914",<br>
+		&nbsp;&nbsp;"name": "PANTUFLA PMTE.TEXTIL",<br>
+		&nbsp;&nbsp;"price": "124.00",<br>
+		&nbsp;&nbsp;"line": "CO",<br>
+		&nbsp;&nbsp;"line_l": "CONFORT",<br>
+		&nbsp;&nbsp;"origin": "NACIONAL",<br>
+		&nbsp;&nbsp;"sizes": "0,0,0,0,0,0,0,0,0,25.5,0,0,27,0,0,28.5,0,0,30,0",<br>
+		&nbsp;&nbsp;"category": "CABALLERO",<br>
+		&nbsp;&nbsp;"colors": "CAFÉ, MARINO"<br>
+		&nbsp;&nbsp;"images": "1914_1.JPG,1914_2.JPG,1914_3.JPG,1914_4.JPG"<br>
+		},{<br>
+		&nbsp;&nbsp;"id_item": "3593",<br>
+		&nbsp;&nbsp;...<br>
+		}]<br>
 	</samp></small>
 	<textarea id="json-code" name="json-load" class="form-control fc-code"><?php if( isset($_POST["json-load"]) && !empty($_POST["json-load"]) ) echo htmlentities($_POST["json-load"]); ?></textarea>
 </div>

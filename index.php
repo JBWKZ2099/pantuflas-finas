@@ -15,16 +15,16 @@
 	    <div class="carousel-item active" style="background-image:url('<?php echo $path.$asset.$row["banner_home_1"] ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=1900x900.jpg" alt="Cover"> -->
 	      <div class="carousel-caption text-center">
-	      	<div class="col-md-12 mb-3">
+	      	<h1 class="text-white mb-3">
+				    <?php echo $row["banner_home_text"]; ?>
+				  </h1>
+	      	<div class="col-md-12">
 	      		<div class="row justify-content-center">
 	      			<div class="col-md-3">
 	      				<a id="scroll-contact" href="#" class="btn btn-yellow-light btn-block btn-noradius"><?php echo $row["banner_btn_home_text"]; ?></a>
 	      			</div>
 	      		</div>
 	      	</div>
-	      	<h1 class="text-white mb-3 mb-md-0">
-				    <?php echo $row["banner_home_text"]; ?>
-				  </h1>
 	      </div>
 	    </div>
 	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset.$row["banner_home_2"] ?>') !important;">
@@ -66,13 +66,13 @@
 					<h1 id="catalogo" class="mb-3 mb-md-5 text-center"><strong><?php echo $row["title_catalogue"]; ?></strong></h1>
 					<div class="row justify-content-center">
 						<div class="col-md-6 mb-3 mb-md-0">
-							<a href="<?php echo $path ?>pedidos">
+							<a href="<?php echo $path ?>pedidos?category=dama">
 								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["lady_img"] ?>" alt="Lady">
 							</a>
 							<h4 class="text-center mt-3"><?php echo $row["lady_catalogue"]; ?></h4>
 						</div>
 						<div class="col-md-6 mb-3">
-							<a href="<?php echo $path ?>pedidos">
+							<a href="<?php echo $path ?>pedidos?category=caballero">
 								<img class="img-fluid d-block m-auto" src="<?php echo $path.$asset.$row["gentleman_img"] ?>" alt="Gentleman">
 							</a>
 							<h4 class="text-center mt-3"><?php echo $row["gentleman_catalogue"]; ?></h4>

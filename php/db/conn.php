@@ -134,7 +134,7 @@
 			"line_l",
 			"origin",
 			"sizes",
-			"d3_c4",
+			"category",
 			"colors",
 			"images",
 			"created_at",
@@ -150,7 +150,7 @@
 				5 => "'".$json_clean[$i]->line_l."'",
 				6 => "'".$json_clean[$i]->origin."'",
 				7 => "'".$json_clean[$i]->sizes."'",
-				8 => "'".$json_clean[$i]->d3_c4."'",
+				8 => "'".$json_clean[$i]->category."'",
 				9 => "'".$json_clean[$i]->colors."'",
 				10 => "'".$json_clean[$i]->images."'",
 				11 => "'".date("Y-m-d H:i:s")."'",
@@ -261,13 +261,13 @@
 		return date("Y-m-d H:i:s");
 	}
 
-	function getProducts($mysqli,$page) {
+	function getProducts($mysqli,$page,$category) {
 		// '$page' es la página actual ($_GET["page"])
     // '$total' es el total de registros y se ocupa para poder calcular el número de resultados por página
     // '$total_pages' guarda la cantidad total de páginas
     // '$limit_1' es la cantidad de resultados, utilizada como tipo variable global tanto para la consulta como para el parámetro '$limit_0'
     // '$limit_0' es la primer "página" de los resultados de la consulta sql
-    $query = "SELECT COUNT(*) as num_rows FROM assortment";
+    $query = "SELECT COUNT(*) as num_rows FROM assortment WHERE category='$category'";
     $res = mysqli_query($mysqli, $query);
     $total = mysqli_fetch_array($res)["num_rows"];
     $limit_1 = 9;
@@ -278,7 +278,7 @@
 
     $limit_0 = ($page*$limit_1)-$limit_1;
 
-    $sql = "SELECT * FROM assortment LIMIT $limit_0,$limit_1";
+    $sql = "SELECT * FROM assortment WHERE category='$category' LIMIT $limit_0,$limit_1";
     $query = mysqli_query($mysqli,$sql);
     $datos = array();
     // $counter = 0;
@@ -293,7 +293,7 @@
 				"line_l" => $row["line_l"],
 				"origin" => $row["origin"],
 				"sizes" => $row["sizes"],
-				"d3_c4" => $row["d3_c4"],
+				"category" => $row["category"],
 				"colors" => $row["colors"],
 				"images" => $row["images"],
 				"pages" => $total_pages,
@@ -318,7 +318,7 @@
 				"line_l" => $row["line_l"],
 				"origin" => $row["origin"],
 				"sizes" => $row["sizes"],
-				"d3_c4" => $row["d3_c4"],
+				"category" => $row["category"],
 				"colors" => $row["colors"],
 				"images" => $row["images"],
     	);

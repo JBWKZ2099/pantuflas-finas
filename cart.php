@@ -98,7 +98,7 @@
 	</section>
 
 
-	<a href="https://api.whatsapp.com/send?phone=5500000000" class="whatsapp-contact p-2 p-md-3">
+	<a href="https://api.whatsapp.com/send?phone=525500000000" class="whatsapp-contact p-2 p-md-3">
 		<span class="d-none d-md-block">Envíanos un mensaje de Whatsapp</span>
 		<i class="fab fa-whatsapp fa-2x d-block d-md-none"></i>
 	</a>
