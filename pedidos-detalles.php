@@ -185,14 +185,27 @@
 								  return false;
 								});
 
-								$("#zoom_telas_01").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_02").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_03").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_04").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_05").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_06").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_07").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
-								$("#zoom_telas_08").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:10, responsive:true, scrollZoom:true});
+								var ws = $(window).width();
+
+								if( ws>767 ) {
+									$("#zoom_telas_01").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_02").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_03").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_04").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_05").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_06").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_07").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+									$("#zoom_telas_08").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5, zoomWindowWidth:500, zoomWindowHeight:500, zoomWindowPosition:6, responsive:true, scrollZoom:true});
+								} else {
+									$("#zoom_telas_01").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_02").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_03").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_04").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_05").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_06").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_07").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+									$("#zoom_telas_08").elevateZoom({zoomWindowWidth:500, zoomWindowHeight:500, zoomType:"inner", responsive:true, scrollZoom:true});
+								}
 								/*$("[data-img]").click(function(e){
 									e.preventDefault();
 									var which = $(this).attr("data-img");

@@ -407,10 +407,10 @@ MEDIA QUERIES
 	#home-carousel,
 	#home-carousel .carousel-item { height: 300px; min-height: auto; }
 	#home-carousel .carousel-item {
-		-webkit-background-size: 800px;
-		-moz-background-size: 800px;
-		-o-background-size: 800px;
-		background-size: 800px;
+		-webkit-background-size: 1200px;
+		-moz-background-size: 1200px;
+		-o-background-size: 1200px;
+		background-size: 1200px;
 	}
 	#recaptcha {
 		-webkit-transform: scale(0.9);
