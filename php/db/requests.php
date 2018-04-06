@@ -569,6 +569,29 @@
 				restoreRecord($id, $tbl);
 				header("Location: ".$up_dir."admin/".$path);
 				break;
+
+			case "add-cart":
+				session_start();
+					if( !isset($_SESSION['cart'][$_POST["id_item"]]) ) {
+						$_SESSION['cart'][$_POST["id_item"]]=1;
+					}
+				
+				header("Location: ".$up_dir."cart");
+				break;
+
+			case "delete-item":
+				session_start();
+				$id = $_POST["id_item"];
+				if(isset($_SESSION['cart'][$id]))
+					unset($_SESSION['cart'][$id]);
+				
+				// session_destroy();
+				header("Location: ".$up_dir."cart");
+				break;
+
+			case "pedido":
+				
+				break;
 			
 			default:
 				break;

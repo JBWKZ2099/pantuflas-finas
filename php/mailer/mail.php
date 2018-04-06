@@ -94,6 +94,23 @@
 				<b>Empresa:</b> $empresa<br>
 				<b>Mensaje:</b> <br><br>$mensaje";
 
+			session_start();
+			if( isset($_SESSION["cart"]) ) {
+				$body_msg_webmaster .= "El usuario $name solicitó:";
+				include("../db/conn.php");
+				$mysqli = conectar_db();
+				selecciona_db($mysqli);
+
+				foreach( $_SESSION["cart"] as $key => $item ) {
+					$details = getProduct($mysqli,$key);
+					$body_msg_webmaster .= "
+						<b>Estilo: </b>".$details[0]["id_item"]."
+						<b>Precio: </b>".$details[0]["price"]."
+						<b>Talla: </b>".$details[0]["price"]."
+					";
+				}
+			}
+
 			$subject_webmaster = "Contacto Sitio Web ".$company;
 
 			$body_msg_user = "

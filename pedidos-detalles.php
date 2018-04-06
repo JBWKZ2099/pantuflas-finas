@@ -11,6 +11,7 @@
 
 		$details = getProduct($mysqli,$_GET["id"]);
 		// var_dump($details);
+		// unset($_SESSION["cart"]);
 	?>
 </head>
 <body>
@@ -35,7 +36,7 @@
 				</p>
 			</div>
 
-			<div class="row pt-30 align-items-center products-container">
+			<form class="row pt-30 align-items-center products-container" action="<?php echo $path ?>php/db/requests.php" method="POST">
 				<?php if( isset($details) && !empty($details) ) { ?>
 					<div class="col-md-6 mb-3 mb-md-0 main-image-container">
 						<?php
@@ -93,10 +94,28 @@
 
 						<div class="row mt-3 colors-container">
 							<div class="col-md-12 mb-3">
-								<form action="" method="POST">
-									<input type="hidden" name="request" value="add-cart">
-									<button type="button" class="btn btn-black btn-noradius">Agregar pedido</button>
-								</form>
+								<?php /*
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="minus-item" type="button" class="btn btn-outline-secondary">
+													<i class="fas fa-minus-circle fa-lg"></i>
+												</button>
+											</div>
+											<input id="qty-product" class="form-control text-center" name="qty" value="1" required readonly="">
+											<div class="input-group-append">
+												<button id="plus-item" type="button" class="btn btn-outline-secondary">
+													<i class="fas fa-plus-circle fa-lg"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								*/ ?>
+								<input type="hidden" name="request" value="add-cart">
+								<input type="hidden" name="id_item" value="<?php echo $details[0]["id_item"] ?>">
+								<button type="submit" class="btn btn-black btn-noradius">Agregar pedido</button>
 							</div>
 							<div class="col-md-12 mb-3">
 								<p><strong>Colores disponibles:</strong></p>
@@ -233,7 +252,7 @@
 						<h1><strong>El producto que estás buscando no existe.</strong></h1>
 					</div>
 				<?php } ?>
-			</div>
+			</form>
 		</div>
 	</section>
 
@@ -246,6 +265,17 @@
 	<?php include("widgets/frm-cont.php"); ?>
 
 	<?php include("structure/footer.php") ?>
+
+	<script>
+		$("#minus-item").click(function(e){
+			if( parseInt( $("#qty-product").val() )>1 )
+				$("#qty-product").val( parseInt( $("#qty-product").val() )-1 );
+		});
+
+		$("#plus-item").click(function(e){
+				$("#qty-product").val( parseInt( $("#qty-product").val() )+1 );
+		});
+	</script>
 </body>
 </html>
 <?php
