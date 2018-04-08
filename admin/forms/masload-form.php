@@ -17,8 +17,9 @@
 		&nbsp;&nbsp;"origin": "NACIONAL",<br>
 		&nbsp;&nbsp;"sizes": "0,0,0,0,0,0,0,0,0,25.5,0,0,27,0,0,28.5,0,0,30,0",<br>
 		&nbsp;&nbsp;"category": "CABALLERO",<br>
-		&nbsp;&nbsp;"colors": "CAFÉ, MARINO"<br>
-		&nbsp;&nbsp;"images": "1914_1.JPG,1914_2.JPG,1914_3.JPG,1914_4.JPG"<br>
+		&nbsp;&nbsp;"colors": "CAFÉ, MARINO",<br>
+		&nbsp;&nbsp;"images": "1914_1.JPG,1914_2.JPG,1914_3.JPG,1914_4.JPG",<br>
+		&nbsp;&nbsp;"cloth": "microterry"<br>
 		},{<br>
 		&nbsp;&nbsp;"id_item": "3593",<br>
 		&nbsp;&nbsp;...<br>

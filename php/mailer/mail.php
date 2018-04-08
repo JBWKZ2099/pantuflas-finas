@@ -51,9 +51,9 @@
 	// exit();
 
 	if( $_errors==0 ) {
-		//web site secret key
+		/*web site secret key*/
 		$secret = "6LfhZE4UAAAAANxb8W5mzUGrS0XjZtIm_zpXtv-d";
-		//get verify response data
+		/*get verify response data*/
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$params = array( "secret"=>$secret, "response"=>$_POST["g-recaptcha-response"] );
@@ -79,48 +79,85 @@
 			// noreply.usogas@gmail.com
 			// 0Nq2Hrvo
 
-			if( $production )
-				$webmaster = "info@pantuflasfinas.com.mx";
-			else
-				$webmaster = "iramirez@fabricadesoluciones.com";
-			
-			$body_msg_webmaster = "
-				Recientemente $name se puso en contacto.
-				<p></p>
-				<b>Datos:</b><br>
-				<b>Nombre:</b> $name<br>
-				<b>Correo:</b> $usr_mail<br>
-				<b>Teléfono:</b> $telefono<br>
-				<b>Empresa:</b> $empresa<br>
-				<b>Mensaje:</b> <br><br>$mensaje";
+			if( $production ) {
+				if( isset($_POST["request"]) && !empty($_POST["request"]) && $_POST["request"]=="pedidos" )
+					$webmaster = "pedidos@pantuflasfinas.com.mx";
+				else
+					$webmaster = "info@pantuflasfinas.com.mx";
+			} else {
+				$webmaster = "ivan_amigue@hotmail.com";
+			}
 
-			session_start();
-			if( isset($_SESSION["cart"]) ) {
-				$body_msg_webmaster .= "El usuario $name solicitó:";
+			if( isset($_SESSION["cart"]) && $_POST["request"]=="pedidos" ) {
 				include("../db/conn.php");
 				$mysqli = conectar_db();
 				selecciona_db($mysqli);
 
 				foreach( $_SESSION["cart"] as $key => $item ) {
 					$details = getProduct($mysqli,$key);
-					$body_msg_webmaster .= "
-						<b>Estilo: </b>".$details[0]["id_item"]."
-						<b>Precio: </b>".$details[0]["price"]."
-						<b>Talla: </b>".$details[0]["price"]."
-					";
+					$columns = array(
+						"id",
+						"folio",
+						"date",
+						"name",
+						"email",
+						"phone",
+						"company",
+						"qty",
+						"size",
+					);
+
+					$data = array(
+						0 => "NULL",
+						1 => "'".date("Y-m-d", strtotime("today"))."'",
+						2 => "'".$details[0]["id_item"]."'",
+						3 => "'".$name."'",
+						4 => "'".$_POST["email"]."'",
+						5 => "'".$_POST["phone"]."'",
+						6 => "'".$_POST["company"]."'",
+						7 => "'".$_SESSION["cart"][$details[0]["id_item"]][0]."'",
+						8 => "'".$_SESSION["cart"][$details[0]["id_item"]][1]."'",
+					);
 				}
+
+				$body_msg_webmaster = "
+					<p>¡Hola!</p>
+					<p>Se ha recibido una nueva solicitud de presupuesto de $name, por favor accede al sistema de pedidos para visualizar a detalle la solicitud.</p>
+				";
+				registro_nuevo("web_requests", $data, $columns, null);
+				unset($_SESSION["cart"]);
+
+				$body_msg_user = "
+					<p>¡Hola $name!</p>
+					<p>Muchas gracias por su interés en nuestros productos, recibimos su solicitud correctamente, le contactaremos lo más pronto posible.</p>
+				";
+				
+				$subject_usr = "Solicitud web ".$company;
+				
+				$_SESSION["thanks"] = '<h1 class="mb-3">GRACIAS POR SU SOLICITUD, PRONTO NOS PONDREMOS EN CONTACTO CONTIGO.</h1>';
+			} else {
+				$body_msg_webmaster = "
+					Recientemente $name se puso en contacto.
+					<p></p>
+					<b>Datos:</b><br>
+					<b>Nombre:</b> $name<br>
+					<b>Correo:</b> $usr_mail<br>
+					<b>Teléfono:</b> $telefono<br>
+					<b>Empresa:</b> $empresa<br>
+					<b>Mensaje:</b> <br><br>$mensaje";
+				
+				$subject_webmaster = "Contacto Sitio Web ".$company;
+
+				$body_msg_user = "
+					Gracias por contactarnos, hemos recibio su información de manera exitosa, le contactaremos lo más pronto posible.
+					</br>
+					Saludos<br>
+					<strong>$company</strong>
+				";
+
+				$subject_usr = "Contacto Web ".$company;
+				$_SESSION["thanks"] = '<h1 class="mb-3">GRACIAS POR CONTACTARNOS, PRONTO NOS PONDREMOS EN CONTACTO CONTIGO.</h1>';
 			}
-
-			$subject_webmaster = "Contacto Sitio Web ".$company;
-
-			$body_msg_user = "
-				¡Muchas gracias por su interés! En breve nos comunicaremos con usted.
-				</br>
-				Saludos<br>
-				<strong>$company</strong>
-			";
-
-			$subject_usr = "Contacto ".$company;
 
 			$headers_usr = "MIME-Version: 1.0"."\r\n".
 										 "Content-type: text/html; charset=utf-8"."\r\n".
@@ -139,9 +176,7 @@
 			$mail_webmaster = mail($webmaster, $subject_webmaster, $body_msg_webmaster, $headers_webmaster);
 
 			unset( $_SESSION["error"] );
-			$_SESSION["thanks"] = true;
 			header("Location: ../../gracias");
-			echo "pasa header D:";
 			exit();
 		} else { /*error*/
 			$_SESSION["error"] .= "<li>Ocurrió un error al verificar el reCaptcha, por favor intentalo de nuevo.</li>";

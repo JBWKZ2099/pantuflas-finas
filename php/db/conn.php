@@ -137,6 +137,7 @@
 			"category",
 			"colors",
 			"images",
+			"cloth",
 			"created_at",
 			"updated_at",
 		);
@@ -153,8 +154,9 @@
 				8 => "'".$json_clean[$i]->category."'",
 				9 => "'".$json_clean[$i]->colors."'",
 				10 => "'".$json_clean[$i]->images."'",
-				11 => "'".date("Y-m-d H:i:s")."'",
-				12 => "NULL"
+				11 => "'".$json_clean[$i]->cloth."'",
+				12 => "'".date("Y-m-d H:i:s")."'",
+				13 => "NULL"
 			);
 
 			registro_nuevo("assortment", $data, $columns, null);
@@ -296,6 +298,7 @@
 				"category" => $row["category"],
 				"colors" => $row["colors"],
 				"images" => $row["images"],
+				"cloth" => $row["cloth"],
 				"pages" => $total_pages,
     	);
     }
@@ -321,6 +324,7 @@
 				"category" => $row["category"],
 				"colors" => $row["colors"],
 				"images" => $row["images"],
+				"cloth" => $row["cloth"],
     	);
     }
 

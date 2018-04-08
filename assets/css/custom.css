@@ -257,6 +257,7 @@ INDEX
 	-o-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
+#home-carousel .carousel-caption { bottom: 0; padding-bottom: .25rem; }
 .h1-bigger { font-size: 3.5rem; }
 .carousel-contact-btn {
 	width: 100%;
@@ -328,6 +329,7 @@ CART
 	border-right: 2px solid rgba(0,0,0,0.3);
 }
 .cart-container > div:last-child { border: none; }
+.cart-container h3 > strong { word-wrap: break-word; }
 /*=============================================================================
 FOOTER
 =============================================================================*/

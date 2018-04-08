@@ -1,11 +1,13 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<?php
-		session_start();
 		$view_name="Carrito de pedidos";
 		include("structure/head.php");
 		$asset = "uploads/"; // Path where are storaged media files (img, video, etc)
+
+		// var_dump($_SESSION["cart"]);
 	?>
 </head>
 <body>
@@ -51,19 +53,21 @@
 										<div class="col-md-12">
 											<div class="row">
 												<div class="col-md-12 mb-3">
-													<h3><strong><?php echo $details[0]["name"] ?></strong></h3>
+													<h3 class="mb-2"><strong><?php echo $details[0]["name"] ?></strong></h3>
+													<h4 class="mb-2"><strong>Cantidad: </strong> <?php echo $qty = $_SESSION["cart"][$details[0]["id_item"]][0]; ?> </h4>
+													<h4 class="mb-2"><strong>Talla: </strong><?php echo $_SESSION["cart"][$details[0]["id_item"]][1]; ?></h4>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="col-md-4 h-100">
+								<div class="col-md-4">
 									<div class="row h-100 align-items-center">
 										<div class="col-md-12 text-center">
-											<h3 class="mb-3">Precio</h3>
-											<h4> $ <span data-price><?php echo $details[0]["price"]; ?></span> </h4>
-											<?php $cart_total+=$details[0]["price"]; ?>
+											<h3 class="mb-3">Subtotal</h3>
+											<h4> $ <span data-price><?php echo $det_price = $details[0]["price"]*$qty; ?></span> </h4>
+											<?php $cart_total+=$det_price; ?>
 										</div>
 									</div>	
 								</div>

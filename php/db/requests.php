@@ -572,8 +572,11 @@
 
 			case "add-cart":
 				session_start();
+				// var_dump($_POST);
+				// session_destroy();
+				// exit();
 					if( !isset($_SESSION['cart'][$_POST["id_item"]]) ) {
-						$_SESSION['cart'][$_POST["id_item"]]=1;
+						$_SESSION['cart'][$_POST["id_item"]] = array( $_POST["qty"], $_POST["sizes"] );
 					}
 				
 				header("Location: ".$up_dir."cart");
@@ -582,15 +585,13 @@
 			case "delete-item":
 				session_start();
 				$id = $_POST["id_item"];
-				if(isset($_SESSION['cart'][$id]))
-					unset($_SESSION['cart'][$id]);
-				
-				// session_destroy();
+				if(isset($_SESSION['cart'][$id])) {
+					if( count($_SESSION['cart'])>1 ) // Validación de si es el último elemento del array
+						unset($_SESSION['cart'][$id]);
+					else
+						session_destroy();
+				}
 				header("Location: ".$up_dir."cart");
-				break;
-
-			case "pedido":
-				
 				break;
 			
 			default:

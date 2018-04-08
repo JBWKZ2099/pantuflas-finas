@@ -15,9 +15,10 @@
 	    <div class="carousel-item active" style="background-image:url('<?php echo $path.$asset.$row["banner_home_1"] ?>') !important;">
 	      <!-- <img class="d-block w-100" src="http://placehold.it/1900x900.jpg?text=1900x900.jpg" alt="Cover"> -->
 	      <div class="carousel-caption text-center">
-	      	<h1 class="text-white mb-3">
+	      	<h1 class="text-white">
 				    <?php echo $row["banner_home_text"]; ?>
 				  </h1>
+	      	<?php /*
 	      	<div class="col-md-12">
 	      		<div class="row justify-content-center">
 	      			<div class="col-md-3">
@@ -25,6 +26,7 @@
 	      			</div>
 	      		</div>
 	      	</div>
+	      	*/ ?>
 	      </div>
 	    </div>
 	    <div class="carousel-item" style="background-image:url('<?php echo $path.$asset.$row["banner_home_2"] ?>') !important;">

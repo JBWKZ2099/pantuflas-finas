@@ -94,7 +94,7 @@
 
 						<div class="row mt-3 colors-container">
 							<div class="col-md-12 mb-3">
-								<?php /*
+								<?php /**/ ?>
 								<div class="row mb-3">
 									<div class="col-md-6">
 										<div class="input-group">
@@ -112,16 +112,16 @@
 										</div>
 									</div>
 								</div>
-								*/ ?>
+								<?php/**/ ?>
 								<input type="hidden" name="request" value="add-cart">
 								<input type="hidden" name="id_item" value="<?php echo $details[0]["id_item"] ?>">
 								<button type="submit" class="btn btn-black btn-noradius">Agregar pedido</button>
 							</div>
-							<div class="col-md-12 mb-3">
+							<div class="col-md-12">
 								<p><strong>Colores disponibles:</strong></p>
 							</div>
 
-							<div class="col-md-12">
+							<div class="col-md-12 mb-3">
 								<?php
 									/*$colors = array(
 										0 => "red",
@@ -133,42 +133,38 @@
 									echo '<div class="available-color mb-3 mb-md-0" style="background-color: <?php echo $colors[$i]; ?>"></div>';
 								}*/
 								?>
-								<?php echo $details[0]["colors"]; ?>
+								<?php echo str_replace(",", ", ", $details[0]["colors"])."."; ?>
 							</div>
+							
+							<?php if( $details[0]["cloth"]!="null" ) {?>
+								<div class="col-md-12 mb-3">
+									<p><strong>Tipo de tela:</strong> <?php echo ucwords( strtolower($details[0]["cloth"]) ); ?></p>
+								</div>
+
+								<div class="col-md-12">
+									<div class="row">
+										<?php
+											$cloth_color = explode(",", $details[0]["colors"]);
+											$noaccent = array(
+									      "Š"=>"S", "š"=>"s", "Ž"=>"Z", "ž"=>"z", "À"=>"A", "Á"=>"A", "Â"=>"A", "Ã"=>"A", "Ä"=>"A", "Å"=>"A", "Æ"=>"A", "Ç"=>"C", "È"=>"E", "É"=>"E", "Ê"=>"E", "Ë"=>"E", "Ì"=>"I", "Í"=>"I", "Î"=>"I", "Ï"=>"I", "Ñ"=>"N", "Ò"=>"O", "Ó"=>"O", "Ô"=>"O", "Õ"=>"O", "Ö"=>"O", "Ø"=>"O", "Ù"=>"U", "Ú"=>"U", "Û"=>"U", "Ü"=>"U", "Ý"=>"Y", "Þ"=>"B", "ß"=>"Ss", "à"=>"a", "á"=>"a", "â"=>"a", "ã"=>"a", "ä"=>"a", "å"=>"a", "æ"=>"a", "ç"=>"c", "è"=>"e", "é"=>"e", "ê"=>"e", "ë"=>"e", "ì"=>"i", "í"=>"i", "î"=>"i", "ï"=>"i", "ð"=>"o", "ñ"=>"n", "ò"=>"o", "ó"=>"o", "ô"=>"o", "õ"=>"o", "ö"=>"o", "ø"=>"o", "ù"=>"u", "ú"=>"u", "û"=>"u", "ý"=>"y", "þ"=>"b", "ÿ"=>"y"
+									    );
+									    $dir_name = ucwords( strtolower($details[0]["cloth"]) );
+									    $i=1;
+											foreach( $cloth_color as $color ) {
+												$color = strtr( $color,$noaccent );
+												echo '
+													<div class="col-md-3 mb-3 mb-md-3">
+														<img id="zoom_telas_0'.$i.'" class="img-fluid d-block m-auto" src="'.$path.'assets/img/'.$dir_name.'/'.$color = ucwords( strtolower($color) ).'.jpg" data-zoom-image="'.$path.'assets/img/'.$dir_name.'/'.$color = ucwords( strtolower($color) ).'.jpg" alt="'.$color = ucwords( strtolower($color) ).'.jpg">
+													</div>
+													';
+												$i++;
+											}
+										?>
+									</div>
+								</div>
+							<?php } ?>
 						</div>
 
-						<div class="col-md-12 mb-3">
-							<p><strong>Telas:</strong></p>
-						</div>
-
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_01" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/cafe_mediano.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/cafe_mediano.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_02" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/cafe.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/cafe.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_03" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/marino.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/marino.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_04" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/negro.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/negro.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_05" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/rosa.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/rosa.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_06" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Gamusina/turquesa.jpg" data-zoom-image="<?php echo $path ?>assets/img/Gamusina/turquesa.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_07" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Microterry/beige.jpg" data-zoom-image="<?php echo $path ?>assets/img/Microterry/beige.jpg">
-								</div>
-								<div class="col-md-3 mb-3 mb-md-3">
-									<img id="zoom_telas_08" class="img-fluid d-block m-auto" src="<?php echo $path ?>assets/img/Microterry/blanco.jpg" data-zoom-image="<?php echo $path ?>assets/img/Microterry/blanco.jpg">
-								</div>
-							</div>
-						</div>
 
 						<div class="row mt-3" id="gallery_01">
 							<div class="col-md-4 mb-3 mb-md-0">

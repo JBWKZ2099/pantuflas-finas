@@ -23,7 +23,7 @@
 	<section class="container-custom thanks-page">
 		<div class="row h-100 align-items-center">
 			<div class="col-md-12 text-center">
-				<h1 class="mb-3">GRACIAS POR CONTACTARNOS, PRONTO NOS PONDREMOS EN CONTACTO CONTIGO.</h1>
+				<?php echo $_SESSION["thanks"]; ?>
 
 				<div class="row justify-content-center">
 					<div class="col-md-3">
