@@ -4,8 +4,6 @@
 		// echo "<script> window.location.href = 'contacto.php' </script>";
 		header("Location: index");
 	}
-		unset($_SESSION["thanks"]);
-		unset($_SESSION["error"]);
 	// echo $_SESSION["thanks"];
 ?>
 <!DOCTYPE html>
@@ -23,7 +21,11 @@
 	<section class="container-custom thanks-page">
 		<div class="row h-100 align-items-center">
 			<div class="col-md-12 text-center">
-				<?php echo $_SESSION["thanks"]; ?>
+				<?php
+					echo $_SESSION["thanks"];
+					unset($_SESSION["thanks"]);
+					unset($_SESSION["error"]);
+				?>
 
 				<div class="row justify-content-center">
 					<div class="col-md-3">

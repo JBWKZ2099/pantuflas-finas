@@ -92,6 +92,7 @@
 				include("../db/conn.php");
 				$mysqli = conectar_db();
 				selecciona_db($mysqli);
+				$folio = date("Ymd-His").rand();
 
 				foreach( $_SESSION["cart"] as $key => $item ) {
 					$details = getProduct($mysqli,$key);
@@ -99,6 +100,7 @@
 						"id",
 						"folio",
 						"date",
+						"id_item",
 						"name",
 						"email",
 						"phone",
@@ -109,22 +111,24 @@
 
 					$data = array(
 						0 => "NULL",
-						1 => "'".date("Y-m-d", strtotime("today"))."'",
-						2 => "'".$details[0]["id_item"]."'",
-						3 => "'".$name."'",
-						4 => "'".$_POST["email"]."'",
-						5 => "'".$_POST["phone"]."'",
-						6 => "'".$_POST["company"]."'",
-						7 => "'".$_SESSION["cart"][$details[0]["id_item"]][0]."'",
-						8 => "'".$_SESSION["cart"][$details[0]["id_item"]][1]."'",
+						1 => "'".$folio."'",
+						2 => "'".date("Y-m-d", strtotime("today"))."'",
+						3 => "'".$details[0]["id_item"]."'",
+						4 => "'".$name."'",
+						5 => "'".$_POST["email"]."'",
+						6 => "'".$_POST["phone"]."'",
+						7 => "'".$_POST["company"]."'",
+						8 => "'".$_SESSION["cart"][$details[0]["id_item"]][0]."'",
+						9 => "'".$_SESSION["cart"][$details[0]["id_item"]][1]."'",
 					);
+					
+					registro_nuevo("web_requests", $data, $columns, null);
 				}
 
 				$body_msg_webmaster = "
 					<p>¡Hola!</p>
 					<p>Se ha recibido una nueva solicitud de presupuesto de $name, por favor accede al sistema de pedidos para visualizar a detalle la solicitud.</p>
 				";
-				registro_nuevo("web_requests", $data, $columns, null);
 				unset($_SESSION["cart"]);
 
 				$body_msg_user = "
